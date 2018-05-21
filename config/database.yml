@@ -6,13 +6,13 @@ mysql: &mysql
   adapter: mysql2
   username: root
   password:
-  database: eotc-helper_<%= Rails.env %>
+  database: eotc_helper_<%= Rails.env %>
 
 postgresql: &postgresql
   adapter: postgresql
   username: postgres
   password:
-  database: eotc-helper_<%= Rails.env %>
+  database: eotc_helper_<%= Rails.env %>
   min_messages: ERROR
 
 defaults: &defaults
