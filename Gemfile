@@ -12,17 +12,17 @@ gem 'rails', '~> 5.1.4'
 # Set databases for Active Record
 group :development, :test do
   # Test sqlite3 on Travis CI
-  gem 'sqlite3', '1.3.6'
+  gem 'sqlite3'
 end
 
 group :test do
   # Test mysql on Travis CI
-  gem 'mysql2', '0.3.11'
+  gem 'mysql2'
 end
 
 group :test, :production do
   # Test postgres on Travis CI
-  gem 'pg', '0.13.2'
+  gem 'pg'
 end
 
 # Use Puma as the app server
