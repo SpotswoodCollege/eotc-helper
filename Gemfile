@@ -8,8 +8,23 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+# Set databases for Active Record
+group :development, :test do
+  # Test sqlite3 on Travis CI
+  gem 'sqlite3', '1.3.6'
+end
+
+group :test do
+  # Test mysql on Travis CI
+  gem 'mysql2', '0.3.11'
+end
+
+group :test, :production do
+  # Test postgres on Travis CI
+  gem 'pg', '0.13.2'
+end
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
