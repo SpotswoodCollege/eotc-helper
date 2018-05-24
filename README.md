@@ -1,4 +1,4 @@
-# eotc-helper [![Build Status](https://travis-ci.org/SpotswoodCollege/eotc-helper.svg?branch=master)](https://travis-ci.org/SpotswoodCollege/eotc-helper)
+# eotc-helper [![Build Status](https://travis-ci.org/SpotswoodCollege/eotc-helper.svg?branch=master)](https://travis-ci.org/SpotswoodCollege/eotc-helper) [![Coverage Status](https://coveralls.io/repos/github/SpotswoodCollege/eotc-helper/badge.svg?branch=master)](https://coveralls.io/github/SpotswoodCollege/eotc-helper?branch=master)
 
 Education Outside the Classroom Helper is a Rails app for helping teachers organise class trips, without lots of paperwork.
 
