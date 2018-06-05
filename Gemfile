@@ -9,10 +9,8 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 
-group :development, :test do
-  # Coveralls for code coverage
-  gem 'coveralls', require: false
-end
+# Coveralls for code coverage
+gem 'coveralls', require: false
 
 # Set databases for Active Record
 group :development, :test do
