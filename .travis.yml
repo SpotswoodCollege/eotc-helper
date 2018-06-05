@@ -9,5 +9,5 @@ env:
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
 before_script:
-  - if [${DB} == mysql]; then mysql -e 'create database eotc_helper_test'; fi
-  - if [${DB} == postgresql]; then psql -c 'create database eotc_helper_test' -U postgres; fi
+  - if ["${DB}" == "mysql"]; then mysql -e 'create database eotc_helper_test'; fi
+  - if ["${DB}" == "postgresql"]; then psql -c 'create database eotc_helper_test' -U postgres; fi
