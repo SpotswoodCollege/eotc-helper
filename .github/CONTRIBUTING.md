@@ -18,6 +18,6 @@ First of all, thanks for helping out!
 
 ## Fixing Things Yourself
 
-* If you want to fix something (like a typo) yourself and have some experience with Github, you can fork the repository. Then fix the bug as normal, and submit a pull request.
+* If you want to fix something (like a typo or bug) yourself and have some experience with Github, you can fork the repository. Then fix the bug as normal, and submit a pull request.
 * If a commit is a change to documentation, include [ci skip] or [skip ci] in its body.
 * Thanks for helping out! We will try to review your PR as soon as possible.
