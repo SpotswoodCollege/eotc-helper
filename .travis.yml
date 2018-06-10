@@ -1,4 +1,4 @@
-language:      ruby
+language:            ruby
 
 rvm:
   - 2.3
@@ -9,6 +9,8 @@ env:
   - DB=mysql
   - DB=postgresql
 
+gemfile:             Gemfile
+
 script:
   - RAILS_ENV=test
   - bundle exec rake --trace db:migrate test
@@ -17,5 +19,7 @@ before_script:
 
 jobs:
   include:
-    - stage:   style enforcement
-      script:  echo Running style enforcement
+    - stage:         Lint
+      before_script: echo "Enforcing styles..."
+      script:        rubocop -R
+      gemfile:       Gemfile-Rubocop
