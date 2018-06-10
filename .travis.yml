@@ -14,3 +14,8 @@ script:
   - bundle exec rake --trace db:migrate test
 before_script:
   - bundle exec rake db:create
+
+jobs:
+  include:
+    - stage:   style enforcement
+      script:  echo Running style enforcement
