@@ -21,6 +21,6 @@ jobs:
   include:
     - stage:         Lint
       before_script: echo "Enforcing styles..."
-      script:        rubocop
+      script:        rubocop --autocorrect
       gemfile:       Gemfile-Rubocop
       env:           
