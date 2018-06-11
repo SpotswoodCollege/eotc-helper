@@ -19,6 +19,6 @@ jobs:
   include:
     - stage:         Lint
       before_script: echo "Enforcing styles..."
-      script:        rubocop --autocorrect
+      script:        rubocop --autocorrect --format json | tee temp_rubocop_output.json
       gemfile:       Gemfile-Rubocop
       env:           
