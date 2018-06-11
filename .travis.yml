@@ -19,7 +19,7 @@ jobs:
   include:
     - stage:         Lint
       before_script: echo "Enforcing styles..."
-      script:        rubocop -a --format json | tee temp_rubocop_output.json
-      after_script:  echo "Done"
+      script:        rubocop -a --format worst -c .rubocop.yml > .rubocop.out %% echo $? > .rubocop.out
+      after_script:  cat .rubocop.out
       gemfile:       Gemfile-Rubocop
-      env:           
+      env:
