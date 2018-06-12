@@ -18,8 +18,13 @@ before_script:
 jobs:
   include:
     - stage:         Lint
-      before_script: echo "Enforcing styles..."
-      script:        rubocop -a --format worst -c .rubocop.yml > .rubocop.out %% echo $? > .rubocop.out
-      after_script:  cat .rubocop.out
-      gemfile:       Gemfile-Rubocop
+      before_script:
+        - echo "Enforcing styles..."
+      script:
+        - rubocop -a --format worst -c .rubocop/yml > .rubocop/out; echo Exited with status $? >> .rubocop/out
+        - ruby .rubocop/script_fail_checker.rb
+      after_script:
+        - cat .rubocop.out
+        - ruby .rubocop/after_script.rb
+      gemfile:       .rubocop/Gemfile
       env:
