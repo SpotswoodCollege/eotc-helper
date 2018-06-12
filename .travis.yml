@@ -24,7 +24,7 @@ jobs:
         - rubocop -a --format worst -c .rubocop/yml > .rubocop/out; echo Exited with status $? >> .rubocop/out
         - ruby .rubocop/script_fail_checker.rb
       after_script:
-        - cat .rubocop.out
+        - cat .rubocop/out
         - ruby .rubocop/after_script.rb
       gemfile:       .rubocop/Gemfile
       env:
