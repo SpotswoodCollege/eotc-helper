@@ -3,6 +3,10 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
+    - 'bin/*'
 
 Rails:
-  Enabled: true
+  Enabled:            true
+
+Style/Documentation:
+  Enabled:            false
