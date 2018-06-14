@@ -121,6 +121,7 @@ This repository makes use of the following tools:
 -   [Inch CI](https://inch-ci.org/github/SpotswoodCollege/eotc-helper) for documentation review
 -   [Synk](https://snyk.io/) for security
 -   [Dependabot](https://app.dependabot.com/) for dependency management
+-   [ZenHub](https://www.zenhub.com/) for project management
 
 * * *
 
