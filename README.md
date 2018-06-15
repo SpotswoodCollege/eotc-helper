@@ -111,6 +111,18 @@ rake db:migrate
 
 Running a production server is currently impossible.
 
+## This Repository
+
+This repository makes use of the following tools:
+
+-   [Travis CI](https://travis-ci.org/SpotswoodCollege/eotc-helper) for continuous integration
+-   [Coveralls](https://coveralls.io/github/SpotswoodCollege/eotc-helper?branch=master) for code coverage
+-   [Codacy](https://www.codacy.com/app/microlith57/eotc-helper) and [codebeat](https://codebeat.co/projects/github-com-spotswoodcollege-eotc-helper-master) for code review
+-   [Inch CI](https://inch-ci.org/github/SpotswoodCollege/eotc-helper) for documentation review
+-   [Synk](https://snyk.io/) for security
+-   [Dependabot](https://app.dependabot.com/) for dependency management
+-   [ZenHub](https://www.zenhub.com/) for project management
+
 * * *
 
 This README would normally document whatever steps are necessary to get the
