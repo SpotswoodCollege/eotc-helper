@@ -20,7 +20,7 @@ jobs:
     - stage:         Lint
       before_script:
         - echo "Enforcing styles..."
-      script:
+      script:        # rubocop -a -c .rubocop/yml
         - rubocop -a --format worst -c .rubocop/yml > .rubocop/out; echo Exited with status $? >> .rubocop/out
         - ruby .rubocop/script_fail_checker.rb
       after_script:
