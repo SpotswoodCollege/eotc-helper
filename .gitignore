@@ -49,3 +49,6 @@ node_modules/
 
 # Ignore rubocop outputs
 .rubocop/out
+
+# Ignore .DS_Store files (they get everywhere)
+.DS_Store
