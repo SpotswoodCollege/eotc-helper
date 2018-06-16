@@ -27,3 +27,12 @@ jobs:
         - cat .rubocop/out
       gemfile:       .rubocop/Gemfile
       env:
+
+notifications:
+  webhooks:
+    urls:
+      secure:        "zAqjR5XJTehORH3NdeTsaHFLXSWWtSHZsAHlMH1FGe3K6MFNHxOWSMi5iUaf69/nSPq4cmrzE0eR6krnNM2W1hFCRizZ1u8RpHve0Fo9YejIPy6YxSY9+5fX5POIuxcwqs6QdAched92jvlmsuzM1uhEn7+WfQFLmgMuqe2nwBG/3VJHZc91YAdja/z/fPLcVGTDG/AybEDa7rZ6PuMKzoFNrLL0vnUGPb+OObpali+6v7w+YYVNTFrMQzcNzRopdduB8INhzG7r4D/xMdGq5xamVYq8GnyN+m3Tk7fXCPrh+1p9T88iTHdDrDI3uHYy37/B+Pkdaz8E6wg1zS+nXMS6305H29UHjzNrgq/6GoR/dyxgeiDPpxGFrT1sJZ4R+qLGFrL7CnQHwXHbxFofnk+MjHAgk5KfK1g0O4q56yTPRGBMF6cVzZkMDqJEhf5P05aTZFPY99xLdtC2FcKRjpkE00lsMKQj5ElOgeyKxgUXChn9tQIOYW0ntiS+JY46fKrmSFRux9ZGJmKlOLoCj3Zrl26QMP7GcTvGyT6XxoTrrCkIUegWvOFnE2411QPIxpYF/tvEWZ3pYGu42LrIloovU66zQoYJxKbyYHKMqHh9sRg8gbZHiUam3paLrcAwmVE/ujqcKzVvZiVOzIEVbg0av1YJs9zZn2wQ+fr9FRI="
+
+    on_success: change  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: never     # options: [always|never|change] default: always
