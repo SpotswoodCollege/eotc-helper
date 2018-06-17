@@ -123,6 +123,12 @@ This repository makes use of the following tools:
 -   [Dependabot](https://app.dependabot.com/) for dependency management
 -   [ZenHub](https://www.zenhub.com/) for project management
 
+In addition, the project uses the following command line utilities:
+
+-   [Rubocop](https://github.com/rubocop-hq/rubocop) for style checks
+
+as well as various other utilities, specified in the [Gemfile](Gemfile).
+
 * * *
 
 This README would normally document whatever steps are necessary to get the
