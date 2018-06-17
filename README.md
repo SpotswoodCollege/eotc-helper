@@ -128,28 +128,3 @@ In addition, the project uses the following command line utilities:
 -   [Rubocop](https://github.com/rubocop-hq/rubocop) for style checks
 
 as well as various other utilities, specified in the [Gemfile](Gemfile).
-
-* * *
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
--   [x] Ruby version - 2.3 with Rails 5.2.0
-
--   [x] System dependencies
-
--   [x] Configuration (?)
-
--   [x] Database creation
-
--   [x] Database initialization
-
--   [x] How to run the test suite
-
--   [ ] Services (job queues, cache servers, search engines, etc.)
-
--   [x] Deployment instructions
-
--   [ ] ...
