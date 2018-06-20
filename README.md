@@ -18,7 +18,7 @@ All accounts have the privileges of lesser accounts. Accounts can only be escala
 
 For information about how to contribute, see our [Contribution guidelines](.github/CONTRIBUTING.md) and [Code of Conduct](.github/CODE_OF_CONDUCT.md).
 
-We are currently organizing a public chatroom for discussion.
+There is a public chatroom for discussion [on Gitter](https://gitter.im/SpotswoodCollege/eotc-helper).
 
 ## Dependencies
 
