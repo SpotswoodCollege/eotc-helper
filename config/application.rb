@@ -1,4 +1,4 @@
-require_relative "boot"
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -10,6 +10,9 @@ module EOTCHelper
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
+
+    # Leaving this false is depreciated
+    Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
