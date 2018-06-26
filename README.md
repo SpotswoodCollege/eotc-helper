@@ -31,13 +31,6 @@ This app runs on Ruby 2.3 with Rails 5.2.0. Other dependency information is avai
 In the development phase, it is recommended to use SQLite. This does not require a command to create its database, but to use it, you must set the environment variables `$RAILS-ENV` to `development` and `$DB` to `sqlite`:
 
 ```bash
-RAILS_ENV=development
-DB=sqlite
-```
-
-This must be run every terminal session. Alternatively, for a permanent solution:
-
-```bash
 export RAILS_ENV=development
 export DB=sqlite
 ```
@@ -93,10 +86,7 @@ You must also set the environment variables:
 
 ```bash
 export RAILS_ENV=production
-export DB=postgresql # not necessarily needed,
-                     # but good practice to
-                     # overwrite potential
-                     # previous values
+export DB=postgresql
 ```
 
 ### Database Initialization
