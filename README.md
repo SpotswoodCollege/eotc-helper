@@ -118,3 +118,10 @@ In addition, the project uses the following command line utilities:
 -   [Rubocop](https://github.com/rubocop-hq/rubocop) for style checks
 
 as well as various other utilities, specified in the [Gemfile](Gemfile).
+
+## Thanks!
+
+Thanks to all the wonderful resources we are using!
+
+-   (Rails Guides)[http://guides.rubyonrails.org/]
+-   (Rails Tutorial)[https://www.railstutorial.org/]
