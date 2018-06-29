@@ -123,5 +123,5 @@ as well as various other utilities, specified in the [Gemfile](Gemfile).
 
 Thanks to all the wonderful resources we are using!
 
--   (Rails Guides)[http://guides.rubyonrails.org/]
--   (Rails Tutorial)[https://www.railstutorial.org/]
+-   [Rails Guides](http://guides.rubyonrails.org/)
+-   [Rails Tutorial](https://www.railstutorial.org/)
