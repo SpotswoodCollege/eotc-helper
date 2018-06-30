@@ -43,17 +43,7 @@ To run the Rails server, run `rails server`. Should this fail, run `bin/rails se
 
 This repository is set up to use [Travis CI](https://travis-ci.org/SpotswoodCollege/eotc-helper) for continuous integration. However, local testing is encouraged.
 
-To test your code locally, run
-
-```bash
-rails test
-```
-
-and to lint it, run
-
-```bash
-rubocop -a -c .rubocop/yml
-```
+To test your code locally, run ```rails test```, and to lint it, run ```rubocop -a -c .rubocop/yml```.
 
 ### Database Creation
 
