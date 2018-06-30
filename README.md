@@ -41,6 +41,20 @@ To run the Rails server, run `rails server`. Should this fail, run `bin/rails se
 
 ## Testing
 
+This repository is set up to use [Travis CI](https://travis-ci.org/SpotswoodCollege/eotc-helper) for continuous integration. However, local testing is encouraged.
+
+To test your code locally, run
+
+```bash
+rails test
+```
+
+and to lint it, run
+
+```bash
+rubocop -a -c .rubocop/yml
+```
+
 ### Database Creation
 
 There are three supported database packages: SQLite, mysql, and postgresql. To switch between them, set the `$DB` environment variable. If the environment variable is not set, the default database is `postgresql`. To use a database package, it must be installed.
