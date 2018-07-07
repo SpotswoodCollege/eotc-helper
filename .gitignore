@@ -52,3 +52,6 @@ node_modules/
 
 # Ignore .DS_Store files (they get everywhere)
 .DS_Store
+
+# Ignore desktop.ini files
+desktop.ini
