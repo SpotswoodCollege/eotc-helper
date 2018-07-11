@@ -1,5 +1,6 @@
 module SessionsHelper
-  # Log in the given user
+  # Log in the given User
+  # Does not return a value
   def log_in(user)
     session[:user_id] = user.id
   end
