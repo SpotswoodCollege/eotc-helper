@@ -15,5 +15,6 @@ class SessionsController < ApplicationController
     end
   end
 
+  # Destroy a Session object
   def destroy; end
 end

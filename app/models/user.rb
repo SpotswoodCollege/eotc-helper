@@ -1,3 +1,6 @@
+# Defines a User. A user has a name, email, and a password. Emails must be
+# unique and valid.. Passwords must be long enough. Names and emails must be
+# within sensible limits.
 class User < ApplicationRecord
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # TODO: This was from https://www.railstutorial.org/

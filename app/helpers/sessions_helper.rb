@@ -1,3 +1,4 @@
+# Helper module for Sessions
 module SessionsHelper
   # Log in the given User
   # Does not return a value
