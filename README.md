@@ -33,6 +33,24 @@ For information about how to contribute, see our [Contribution guidelines](.gith
 
 There is a public chatroom for discussion [on Gitter](https://gitter.im/SpotswoodCollege/eotc-helper).
 
+### Commit Guidelines
+
+This repository uses Commitizen. To make a commit, you will need to follow the format.
+
+First, install Commitizen:
+
+```bash
+npm install --global commitizen
+```
+
+Then, each time you commit, use
+
+```bash
+git-cz -s
+```
+
+instead of ```git commit``` and follow the command line instructions. This system ensures simple, machine-readable commits, and also [Developer Certificate of Origin](https://developercertificate.org/) signing. These formats are mandatory for PR acceptance.
+
 ## Dependencies
 
 This app runs on Ruby 2.3 with Rails 5.2.0. Other dependency information is available in the [Gemfile](Gemfile). To install all dependencies, run `gem install bundler` and then `bundle install`. Further, the app requires a database. See the Database Creation section below.
