@@ -1,5 +1,8 @@
 {
   "name": "eotc-helper",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/travis-cli": "^7.0.0"
+  }
 }

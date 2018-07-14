@@ -30,6 +30,13 @@ jobs:
         - cat .rubocop/out
       gemfile:       .rubocop/Gemfile
       env:
+    - stage:         CommitLint
+      before_script:
+      script:
+        - commitlint-travis
+      after-script:
+      gemfile:
+      env:
 
 notifications:
   webhooks:
