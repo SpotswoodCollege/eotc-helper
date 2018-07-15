@@ -1,0 +1,9 @@
+<% provide(:title, 'Settings') %>
+<h1>Settings</h1>
+<%= logged_in? %>
+<br /><br />
+<%= @user.name %> (<%= @user.email %>)
+<br /><br />
+Password Digest: <%= @user.password_digest %>
+<br /><br />
+<%= link_to "Log out", logout_path, method: :delete %>
