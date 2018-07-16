@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
   # (private) Is the given user valid?
   # Returns true if yes, false otherwise.
   def user_valid?(session_params, user)
-    user && user.authenticate(params[:session][:password])
+    user && user.authenticate(session_params[:password])
   end
 
   # (private) Remember or forget the given user based on their preference.
