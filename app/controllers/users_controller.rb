@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   # Show a user profile page
   # @todo Update route for user profile page
   def show
-    @user = current_user
+    if logged_in?
+      @user = current_user
+    else
+      redirect_to login_path
+    end
   end
 
   # Show the form for a new user
