@@ -50,7 +50,7 @@ class User < ApplicationRecord
 
   # Forgets a user.
   def forget
-    update(:remember_digest => nil)
+    update(remember_digest: nil)
   end
 
   # Returns true if the given token matches the digest.
