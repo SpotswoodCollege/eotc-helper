@@ -61,6 +61,9 @@ end
 # Use devise for users and authentication
 gem 'devise'
 
+# Use CanCanCan for roles and permissions
+gem 'cancancan', '~> 2.0'
+
 # Use Letter Opener for development mail previews
 gem "letter_opener", :group => :development
 
