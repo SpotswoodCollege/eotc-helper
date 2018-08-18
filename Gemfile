@@ -11,21 +11,8 @@ gem 'rails', '~> 5.2.1'
 # Coveralls for code coverage
 gem 'coveralls', require: false
 
-# Set databases for Active Record
-group :development, :test do
-  # Test sqlite3 on Travis CI
-  gem 'sqlite3'
-end
-
-group :test do
-  # Test mysql on Travis CI
-  gem 'mysql2'
-end
-
-group :test, :production do
-  # Test postgres on Travis CI
-  gem 'pg'
-end
+# Set database for Active Record
+gem 'pg'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
