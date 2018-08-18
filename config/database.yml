@@ -1,7 +1,17 @@
+sqlite: &sqlite
+  adapter: sqlite3
+  database: db/<%= Rails.env %>.sqlite3
+
+mysql: &mysql
+  adapter: mysql2
+  username: root
+  password:
+  database: eotc_helper_<%= Rails.env %>
+
 postgresql: &postgresql
   adapter: postgresql
-  username: rails_ps
-  password: rails_ps
+  username: postgres
+  password:
   database: eotc_helper_<%= Rails.env %>
   min_messages: ERROR
 
@@ -9,7 +19,7 @@ defaults: &defaults
   pool: 5
   timeout: 5000
   host: localhost
-  <<: *postgresql
+  <<: *<%= ENV['DB'] || "postgresql" %>
 
 development:
   <<: *defaults
@@ -18,7 +28,5 @@ test:
   <<: *defaults
 
 production:
-  # username: <%=  %>
-  # password: <%=  %>
   <<: *defaults
   # TODO: Add erb-echo of credentials

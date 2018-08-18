@@ -11,8 +11,21 @@ gem 'rails', '~> 5.2.1'
 # Coveralls for code coverage
 gem 'coveralls', require: false
 
-# Set database for Active Record
-gem 'pg'
+# Set databases for Active Record
+group :development, :test do
+  # Test sqlite3 on Travis CI
+  gem 'sqlite3'
+end
+
+group :test do
+  # Test mysql on Travis CI
+  gem 'mysql2'
+end
+
+group :test, :production do
+  # Test postgres on Travis CI
+  gem 'pg'
+end
 
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
@@ -57,12 +70,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-# Use devise for users and authentication
-gem 'devise'
-
-# Use Letter Opener for development mail previews
-gem "letter_opener", :group => :development
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
