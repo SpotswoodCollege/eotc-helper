@@ -62,11 +62,10 @@ This app runs on Ruby 2.3 with Rails 5.2.0. Other dependency information is avai
 
 ### Databases in Development
 
-In the development phase, it is recommended to use SQLite. This does not require a command to create its database, but to use it, you must set the environment variables `$RAILS-ENV` to `development` and `$DB` to `sqlite`:
+In the development phase, it is recommended to use SQLite. This does not require a command to create its database, but to use it, you must set the environment variable `$RAILS-ENV` to `development`:
 
 ```bash
 export RAILS_ENV=development
-export DB=sqlite
 ```
 
 ### Server
@@ -81,9 +80,9 @@ To test your code locally, run ```rails test```, and to lint it, run ```rubocop 
 
 ### Database Creation
 
-There are three supported database packages: SQLite, mysql, and postgresql. To switch between them, set the `$DB` environment variable. If the environment variable is not set, the default database is `postgresql`. To use a database package, it must be installed.
+The eotc-helper application supports the `postgresql` database adapter. Please ensure that you have it installed before running the application.
 
-To create the database, run
+To set up the postgresql database, run
 
 ```bash
 bundle exec
@@ -113,18 +112,17 @@ This sets the environment to a testing environment, and executes the tests. This
 
 ### Database Creation
 
-For deployment, it is recommended to use PostgreSQL, as it is most suited to the deployment phase. To create the production database, use:
+To create the production database, use:
 
 ```bash
 bundle exec
 rake db:create
 ```
 
-You must also set the environment variables:
+You must also set the `RAILS_ENV` environment variable:
 
 ```bash
 export RAILS_ENV=production
-export DB=postgresql
 ```
 
 ### Database Initialization
@@ -137,7 +135,7 @@ rake db:migrate
 
 ### Server
 
-Running a production server is currently impossible.
+Running a production server is currently impossible, as the app is not functional.
 
 ## This Repository
 
@@ -155,7 +153,7 @@ In addition, the project uses the following command line utilities:
 
 -   [Rubocop](https://github.com/rubocop-hq/rubocop) for style checks
 
-as well as various other utilities, specified in the [Gemfile](Gemfile).
+as well as various other utilities, specified in the [Gemfile](Gemfile) and the [node package file](package.json).
 
 ## Thanks!
 

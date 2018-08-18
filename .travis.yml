@@ -7,11 +7,6 @@ rvm:
   - 2.3
   - ruby-head
 
-env:
-  - DB=sqlite
-  - DB=mysql
-  - DB=postgresql
-
 script:
   - RAILS_ENV=test
   - bundle exec rake --trace db:migrate test # run 'rails test' on a local machine
@@ -29,7 +24,12 @@ jobs:
       after_script:
         - cat .rubocop/out
       gemfile:       .rubocop/Gemfile
-      env:
+    - stage:         CommitLint
+      before_script:
+      script:
+        - commitlint-travis
+      after-script:
+      gemfile:
 
 notifications:
   webhooks:
