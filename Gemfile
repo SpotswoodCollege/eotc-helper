@@ -65,10 +65,10 @@ gem 'devise'
 gem 'cancancan', '~> 2.0'
 
 # Use Letter Opener for development mail previews
-gem "letter_opener", :group => :development
+gem 'letter_opener', group: :development
 
 # Use rails_real_favicon for favicon support on many platforms
-gem 'rails_real_favicon', :group => :development
+gem 'rails_real_favicon', group: :development
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
