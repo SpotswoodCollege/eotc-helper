@@ -56,83 +56,58 @@ instead of ```git commit``` and follow the command line instructions. This syste
 
 ## Dependencies
 
-This app runs on Ruby 2.3 with Rails 5.2.0. Other dependency information is available in the [Gemfile](Gemfile). To install all dependencies, run `gem install bundler` and then `bundle install`. Further, the app requires a database. See the Database Creation section below.
+This app runs on Ruby 2.3 with Rails 5.2.0. Other dependency information is available in the [Gemfile](Gemfile). Dependency installation is included in the setup and update phases. This application also requires a PostgreSQL database.
 
 ## Configuration
 
-### Databases in Development
+### Setup
 
-In the development phase, it is recommended to use SQLite. This does not require a command to create its database, but to use it, you must set the environment variables `$RAILS-ENV` to `development` and `$DB` to `sqlite`:
+To setup the environment, run:
 
 ```bash
 export RAILS_ENV=development
-export DB=sqlite
+bin/setup
+```
+
+### Update from an Earlier Version
+
+When updating from an earlier version of eotc-helper, run
+
+```bash
+export RAILS_ENV=development
+bin/update
 ```
 
 ### Server
 
-To run the Rails server, run `rails server`. Should this fail, run `bin/rails server`. Remember that you must be in the eotc-helper directory.
+To run the Rails server, run `rails server`. Should this fail, run `bin/rails server`.
 
 ## Testing
 
 This repository is set up to use [Travis CI](https://travis-ci.org/SpotswoodCollege/eotc-helper) for continuous integration. However, local testing is encouraged.
 
-To test your code locally, run ```rails test```, and to lint it, run ```rubocop -a -c .rubocop/yml```.
-
-### Database Creation
-
-There are three supported database packages: SQLite, mysql, and postgresql. To switch between them, set the `$DB` environment variable. If the environment variable is not set, the default database is `postgresql`. To use a database package, it must be installed.
-
-To create the database, run
-
-```bash
-bundle exec
-rake db:create
-```
-
-### Database Initialization
-
-To initialize the database, run
-
-```bash
-rake db:migrate
-```
-
-### Test Suite
-
-To run the test suite, use
-
-```bash
-RAILS_ENV=test
-rake --trace db:migrate test
-```
-
-This sets the environment to a testing environment, and executes the tests. This script is automatically exected by our Continuous Integration software (currently [Travis CI]((https://travis-ci.org/SpotswoodCollege/eotc-helper)).
+To test your code locally, run ```rake test```, and to lint it, run ```rubocop -a -c .rubocop/yml```.
 
 ## Deployment
 
 ### Database Creation
 
-For deployment, it is recommended to use PostgreSQL, as it is most suited to the deployment phase. To create the production database, use:
+To create the production database, use:
 
 ```bash
-bundle exec
-rake db:create
+bin/setup
 ```
 
-You must also set the environment variables:
+Or, if updating from an earlier version:
+
+```bash
+bin/update
+```
+
+You must also set the rails environment variable:
 
 ```bash
 export RAILS_ENV=production
-export DB=postgresql
-```
-
-### Database Initialization
-
-Simply run:
-
-```bash
-rake db:migrate
 ```
 
 ### Server
