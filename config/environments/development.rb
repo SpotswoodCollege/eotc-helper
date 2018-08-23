@@ -35,18 +35,20 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Setup letter opener
-  # config.action_mailer.delivery_method = :letter_opener
-  # config.action_mailer.perform_deliveries = true
-
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'gmail.com',
-    user_name:            'eotc-helper@spotswoodcollege.school.nz',
-    password:             '[FILTERED]', # TODO:  Environment variable here!
-    authentication:       :plain,
-    enable_starttls_auto: true
-  }
+  if ENV["RAILS_MAILER"] == "letter_opener"
+    config.action_mailer.delivery_method = :letter_opener
+    config.action_mailer.perform_deliveries = true
+  else
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'gmail.com',
+      user_name:            ENV["RAILS_MAILER_USER"] || 'eotc-helper@spotswoodcollege.school.nz',
+      password:             ENV["RAILS_MAILER_PASS"] || '',
+      authentication:       :plain,
+      enable_starttls_auto: true
+    }
+  end
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
