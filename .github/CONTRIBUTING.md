@@ -19,5 +19,8 @@ First of all, thanks for helping out!
 ## Fixing Things Yourself
 
 * If you want to fix something (like a typo or bug) yourself and have some experience with Github, you can fork the repository. Then fix the bug as normal, and submit a pull request.
+* Make sure your code passes Rubocop inspection. If it fails, provide detailed reasoning in your pull request.
+* Make sure your code is tested. Try to make sure its coverage is high.
+* Make sure your commits use the cz-conventional-changelog format and are signed. To do this automatically, run `git cz -s` with Commitizen installed.
 * If a commit is a change to documentation, include [ci skip] or [skip ci] in its body.
 * Thanks for helping out! We will try to review your PR as soon as possible.

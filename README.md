@@ -6,7 +6,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-909090.svg)](https://github.com/semantic-release/semantic-release)
 <!-- [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) upon first release -->
 
-Education Outside the Classroom Helper is a Rails app for helping teachers organize class trips, without lots of paperwork. It is currently unfinished.
+Education Outside the Classroom Helper is a Rails web app for helping teachers organize class trips, without lots of paperwork. It is currently unfinished.
 
 ## Status
 
@@ -15,6 +15,7 @@ Education Outside the Classroom Helper is a Rails app for helping teachers organ
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7abad57177164b1ca907c8b0d1d50f53)](https://www.codacy.com/app/microlith57/eotc-helper?utm_source=github.com&utm_medium=referral&utm_content=SpotswoodCollege/eotc-helper&utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/93f88656-53ef-478e-b239-519107b62f82)](https://codebeat.co/projects/github-com-spotswoodcollege-eotc-helper-master)
 [![Inline docs](http://inch-ci.org/github/SpotswoodCollege/eotc-helper.svg?branch=master)](http://inch-ci.org/github/SpotswoodCollege/eotc-helper)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1999/badge)](https://bestpractices.coreinfrastructure.org/projects/1999)
 
 The eotc-helper app is currently in development.
 
