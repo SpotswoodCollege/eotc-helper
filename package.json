@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "@commitlint/travis-cli": "^7.0.0",
+    "@commitlint/travis-cli": "^7.1.2",
     "cz-conventional-changelog": "^2.1.0"
   },
   "config": {
