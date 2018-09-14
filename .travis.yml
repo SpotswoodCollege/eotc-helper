@@ -30,7 +30,7 @@ jobs:
       gemfile:       .rubocop/Gemfile
     - stage:         CommitLint
       language: node_js
-      node_js: "4"
+      node_js: "6"
       services:
       before_script:
       script:
