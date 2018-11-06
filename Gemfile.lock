@@ -67,7 +67,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.1)
     coveralls (0.8.22)
       json (>= 1.8, < 3)
       simplecov (~> 0.16.1)
@@ -94,9 +94,9 @@ GEM
       tilt
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (1.1.0)
+    i18n (1.1.1)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.7.0)
+    jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     json (2.1.0)
@@ -250,7 +250,7 @@ DEPENDENCIES
   coveralls
   devise
   haml
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.8)
   letter_opener
   listen (>= 3.0.5, < 3.2)
   pg
