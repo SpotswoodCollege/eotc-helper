@@ -70,6 +70,9 @@ gem 'letter_opener', group: :development
 # Use rails_real_favicon for favicon support on many platforms
 gem 'rails_real_favicon', group: :development
 
+# Use exception_handler for cool dynamic exception pages
+gem 'exception_handler', '~> 0.8.0.0'
+
 # Use haml for easy HTML generation
 gem 'haml'
 

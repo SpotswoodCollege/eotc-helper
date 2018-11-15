@@ -85,6 +85,10 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
+    exception_handler (0.8.0.0)
+      bundler
+      rails (>= 4.2.0)
+      responders
     execjs (2.7.0)
     ffi (1.9.25)
     globalid (0.4.1)
@@ -249,6 +253,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   coveralls
   devise
+  exception_handler (~> 0.8.0.0)
   haml
   jbuilder (~> 2.8)
   letter_opener
