@@ -76,5 +76,8 @@ gem 'exception_handler', '~> 0.8.0.0'
 # Use haml for easy HTML generation
 gem 'haml'
 
+# dotenv gem for environment variables
+gem 'dotenv-rails', group: :development
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
