@@ -1,0 +1,6 @@
+%h1 Groups
+= link_to 'New group', new_group_path
+%ul
+  - @groups.each do |group|
+    %li
+      = link_to group.name, group_path(group)
