@@ -25,4 +25,9 @@ class User < ApplicationRecord
   end
 
   alias role_gte? role_greater_or_equal_to?
+
+  has_many :subscriptions
+  has_many :groups, through: :subscriptions
+
+  # has_many :activities, through: :groups
 end
