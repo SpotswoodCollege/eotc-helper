@@ -25,11 +25,11 @@ The eotc-helper app will allow authorized users (teachers and above) to create t
 
 The app will be built around a user model, with accounts of differing privilege levels.
 
--   Students can subscribe to notifications and comment on trips
--   Teachers can create trips
--   BoT members and the EOTC coordinator can remove, edit, and approve trips
+-   Students and parents (standard accounts) can subscribe to notifications and comment on trips
+-   Teachers (teacher-level accounts) can create trips
+-   Board of Trustees members and the EOTC coordinator (coordinator-level accounts) can remove, edit, and approve trips
 
-All accounts have the privileges of lesser accounts. Accounts can only be escalated to higher permission levels by the System Administrator. Anyone can register a student account.
+All accounts have the privileges of lesser accounts. Accounts can only be escalated to higher permission levels by the System Administrator (admin account). Anyone can register a student account.
 
 ## Contribution
 
