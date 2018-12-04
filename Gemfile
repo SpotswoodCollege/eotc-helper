@@ -43,7 +43,7 @@ group :development, :test do
   # => and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 3.11'
+  gem 'capybara', '~> 3.12'
   gem 'selenium-webdriver'
 end
 
@@ -75,6 +75,9 @@ gem 'exception_handler', '~> 0.8.0.0'
 
 # Use haml for easy HTML generation
 gem 'haml'
+
+# dotenv gem for environment variables
+gem 'dotenv-rails', groups: %i[development test]
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
