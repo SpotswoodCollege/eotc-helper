@@ -1,3 +1,4 @@
 class Group < ApplicationRecord
-  validates :name, unique: true
+  validates :name, presence: { message: "can't be blank" },
+                   uniqueness: { message: 'must be unique' }
 end
