@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
   alias role_gte? role_greater_or_equal_to?
 
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
   has_many :groups, through: :subscriptions
 
   # has_many :activities, through: :groups
