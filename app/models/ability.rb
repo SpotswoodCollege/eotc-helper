@@ -28,5 +28,9 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
+    user ||= User.new
+
+    can :manage, :all if user.role_gte? :administrator
   end
 end
