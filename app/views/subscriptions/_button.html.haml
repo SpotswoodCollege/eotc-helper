@@ -1,0 +1,8 @@
+- if user_signed_in?
+  - subscription = Subscription.find_by group_id: @group.id, user_id: current_user
+  - if subscription
+    = button_to 'Unsubscribe', subscription_path(subscription), method: :delete
+  - else
+    = button_to 'Subscribe',   subscriptions_path(group_id: @group.id, user_id: current_user)
+- else
+  #{link_to 'Sign in', new_user_session_path} to subscribe.
