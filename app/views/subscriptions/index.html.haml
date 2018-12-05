@@ -1,5 +1,9 @@
 %h1 Subscriptions
-%ul
-  - @subscriptions.each do |subscription|
-    %li
-      = link_to subscription.group.name, group_path(subscription.group)
+- if @subscriptions.any?
+  %ul
+    - @subscriptions.each do |subscription|
+      - if subscription.group
+        %li
+          = link_to subscription.group.name, group_path(subscription.group)
+- else
+  %p No subscriptions
