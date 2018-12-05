@@ -1,14 +1,17 @@
 require 'test_helper'
 
 class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get subscriptions_index_url
-    assert_response :success
+  include Devise::Test::IntegrationHelpers
+
+  test 'signed out users cannot see subscriptions' do
+    assert_raises('RuntimeError: Must be logged in') do
+      get subscriptions_url
+    end
   end
 
-  test "should get create" do
-    get subscriptions_create_url
+  test 'signed in users can see subscriptions' do
+    sign_in users(:average_joe)
+    get subscriptions_url
     assert_response :success
   end
-
 end
