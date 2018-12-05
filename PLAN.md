@@ -1,4 +1,8 @@
+# eotc-helper Plan
+
 ## `Activity`
+
+__not yet implemented__
 
 -   Has and belongs to many `Groups`
 -   `name`: string
@@ -15,6 +19,8 @@
 
 ## `User`
 
+_implemented_
+
 -   Devise setup: `:database_authenticatable, :confirmable, :registerable, :recoverable, :rememberable, :validatable, :trackable`
 -   `role`: string
     -   Can be `standard`, `teacher`, `coordinator`, or `administrator`
@@ -27,6 +33,8 @@ has_many :groups, through: :subscriptions
 
 ## `Subscription`
 
+_implemented_
+
 -   Links `Users` and `Groups`
 
 ```ruby
@@ -36,10 +44,13 @@ belongs_to :group
 
 ## `Group`
 
+_implemented_
+
 -   Has and belongs to many `Activities`
 -   Has and belongs to many `Users`
 -   Can be created by teachers
 -   Can be updated / destroyed by administrators and creators
+-   Has subscribe/unsubscribe button
 
 ```ruby
 has_many :subscriptions
@@ -51,7 +62,9 @@ has_many :activities, through: :assignments
 
 ## `Assignment`
 
-- Links `Groups` and `Activities`
+__not yet implemented__
+
+-   Links `Groups` and `Activities`
 
 ```ruby
 belongs_to :group
