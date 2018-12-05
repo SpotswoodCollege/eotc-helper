@@ -14,6 +14,8 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
+    @group.creator = current_user.id if user_signed_in?
+
     if @group.save
       redirect_to @group
     else
