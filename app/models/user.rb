@@ -26,6 +26,15 @@ class User < ApplicationRecord
 
   alias role_gte? role_greater_or_equal_to?
 
+  def role?(other_role)
+    other_role = other_role.to_s || ''
+
+    # If the given role is not valid, raise
+    raise "No such role #{other_role}" unless ROLES.include? other_role
+
+    role == other_role
+  end
+
   has_many :subscriptions, dependent: :destroy
   has_many :groups, through: :subscriptions
 
