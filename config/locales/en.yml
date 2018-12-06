@@ -31,7 +31,7 @@
 
 en:
   subscriptions:
-    created: -<
+    created:
       You have subscribed to %{group_name}, and will recieve notifications about it.
-    destroyed: -<
-      You have unsubscribed from %{@group_name}.
+    destroyed:
+      You have unsubscribed from %{group_name}.
