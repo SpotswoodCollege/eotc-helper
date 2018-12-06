@@ -10,3 +10,11 @@ Rails:
 
 Style/Documentation:
   Enabled:            false
+
+Metrics/AbcSize:
+  Exclude:
+    - app/models/ability.rb
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/models/ability.rb
