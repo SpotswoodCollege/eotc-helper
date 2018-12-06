@@ -12,7 +12,8 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   test 'should not create group with standard role' do
     sign_in users(:average_joe)
     assert_raises 'RuntimeError: Must be logged in' do
-      group = Group.new name: 'PEH101', description: 'Physical Education Level 1'
+      group = Group.new name: 'PEH101',
+                        description: 'Physical Education Level 1'
       group.save!
     end
   end
