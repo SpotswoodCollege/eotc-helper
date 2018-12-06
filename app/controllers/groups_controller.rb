@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to @group
     else
-      render 'new'
+      render 'new', status: :bad_request
     end
   end
 

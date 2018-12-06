@@ -12,7 +12,7 @@ class SubscriptionsController < ApplicationController
     if @subscription.save
       redirect_to @subscription.group, notice: "You have subscribed to #{@group.name}, and will recieve notifications about it."
     else
-      render @subscription.group || groups_path
+      render @subscription.group || groups_path, status: :bad_request
     end
   end
 
