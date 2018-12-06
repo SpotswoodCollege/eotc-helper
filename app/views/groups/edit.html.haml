@@ -1,0 +1,5 @@
+%h1
+  = t 'buttons.group.edit'
+
+= render 'form', action: 'edit'
+= link_to t('buttons.general.back'), group_path(@group)

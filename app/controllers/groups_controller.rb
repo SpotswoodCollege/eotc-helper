@@ -13,6 +13,10 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
   def create
     @group = Group.new(group_params)
 
@@ -22,6 +26,16 @@ class GroupsController < ApplicationController
       redirect_to @group
     else
       render 'new', status: :bad_request
+    end
+  end
+
+  def update
+    @group = Group.find(params[:id])
+
+    if @group.update(group_params)
+      redirect_to @group
+    else
+      render 'edit', status: :bad_request
     end
   end
 
