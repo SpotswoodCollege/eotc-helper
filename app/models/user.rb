@@ -9,9 +9,8 @@ class User < ApplicationRecord
 
   validates :role, presence: true,
                    inclusion: { in: ROLES,
-                                message:
-                                  I18n.translate('error.brief.valid_rel',
-                                                 rel: 'role') }
+                                message: I18n.t('error.brief.valid_rel',
+                                                rel: 'role') }
 
   # Is the user's role greater than or equal to the given role?
   def role_greater_or_equal_to?(other_role)
