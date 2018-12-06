@@ -30,6 +30,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  school:
+    name:
+      Spotswood College
+    # TODO Expand if needed
+    location:
+      country:
+        New Zealand
+      region:
+        Taranaki
+      city:
+        New Plymouth
   buttons:
     general:
       back:
@@ -67,11 +78,101 @@ en:
         Description
       no_description:
         No description given.
+    # TODO should be 'subscription'
     subscriptions:
       created:
         You have subscribed to %{group_name}, and will recieve notifications about it.
       destroyed:
         You have unsubscribed from %{group_name}.
+    activity:
+      name:
+        Name
+      description:
+        Description
+      no_description:
+        No description given.
+      risk:
+        Risk
+      type:
+        detail_prefix:
+          An activity
+        region:
+          Taranaki
+        in_school:
+          brief:
+            In School
+          detail:
+            in the school grounds
+        community:
+          brief:
+            In the Community
+          detail:
+            in the local community, within school hours
+        day_trip:
+          brief:
+            Day Trip
+          detail:
+            further afield, possibly extending out of school hours
+        multi_day:
+          brief:
+            Multi-Day or Extraregional
+          detail:
+            # TODO Make sure this is given `region: I18n.translate('school.location.region')` or equivalent
+            extending overnight or taking place outside %{region}
+      risk_level:
+        low:
+          Low Risk
+        high:
+          High Risk
+      examples:
+        # TODO List source prominently
+        # Source: Table 3.1, EOTC guidelines
+        # http://eotc.tki.org.nz/EOTC-home/EOTC-Guidelines
+        # Accessed Friday December 7, 2018
+        in_school:
+          low_risk:
+            - sports day
+            - horticulture
+            - adventure-based learning activities
+            - painting murals
+            - measuring for mathematics
+          high_risk:
+            - school pool
+            - climbing wall
+        community:
+          low_risk:
+            - museum
+            - art gallery
+            - botanic gardens
+            - sports and recreation events
+          high_risk:
+            - aquatic environments (river, beach)
+            - cross-country-run training
+        day_trip:
+          low_risk:
+            - farm visit
+            - day hike in a local park or in local bush
+            - city visit
+            - train, bus, or ferry trip
+            - swimming in pools
+          high_risk:
+            - skiing
+            - waka ama
+            - rock climbing
+            - swimming in natural environments (beach, river)
+            - field trip involving chemicals or heavy machinery
+        multi_day:
+          low_risk:
+            - trip to another region
+            - sports tournaments
+            - field trips to urban environments
+            - historic sites
+            - “front country” (having well-formed tracks)
+          high_risk:
+            - overseas trips
+            - field trips into natural water, bush, or alpine environments, or other hazardous environments (for example, where chemicals, heavy machinery, or other hazards are present)
+            - outdoor education camps
+            - outdoor pursuit journeys in the “back country” (for example, biking, tramping, canoeing)
   error:
     general:
       error:
