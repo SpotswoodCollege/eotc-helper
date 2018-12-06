@@ -3,10 +3,10 @@
   %em= @group.name
 %p
 %em
-  = @group.description || 'No description given.'
+  = @group.description || t('labels.group.no_description')
 %p
   = render 'subscriptions/button', locals: {group: @group}
 %p
-  = link_to 'Edit', edit_group_path(@group)
+  = link_to t('buttons.group.edit'), edit_group_path(@group)
   |
-  = link_to 'Back', groups_path
+  = link_to t('buttons.general.back'), groups_path

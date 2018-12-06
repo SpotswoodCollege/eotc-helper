@@ -2,19 +2,17 @@
   - if @group.errors.any?
     #error_explanation
       %h2
-        = pluralize(@group.errors.count, "error")
-        prohibited
-        this group from being saved:
+        = t('labels.group.error_message', pluralised_error: pluralize(@group.errors.count, t('labels.group.error')))
       %ul
         - @group.errors.full_messages.each do |msg|
           %li= msg
   %p
-    = form.label :name
+    = form.label :name, t('labels.group.name')
     %br/
     = form.text_field :name
   %p
-    = form.label :description
+    = form.label :description, t('labels.group.description')
     %br/
     = form.text_area :description
   %p
-    = form.submit
+    = form.submit t('buttons.group.create')

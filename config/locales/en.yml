@@ -24,12 +24,53 @@
 # Instead, surround them with single quotes.
 #
 # en:
-#   'true': 'foo'
+#   'true':           'foo'
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  buttons:
+    general:
+      back:
+        Back
+    account:
+      log_in:
+        Log in
+      log_out:
+        Log out
+      sign_up:
+        Sign up
+      settings:
+        Settings
+    subscription:
+      create:
+        Subscribe
+      delete:
+        Unsubscribe
+    group:
+      new:
+        New Group
+      create:
+        Create Group
+      edit:
+        Edit Group
+      update:
+        Confirm Edit
+      delete:
+        Delete Group
+  labels:
+    group:
+      name:
+        Name
+      description:
+        Description
+      no_description:
+        No description given.
+      error:
+        error
+      error_message:
+        Sorry! %{pluralised_error} prevented this group from being saved.
   subscriptions:
     created:
       You have subscribed to %{group_name}, and will recieve notifications about it.
