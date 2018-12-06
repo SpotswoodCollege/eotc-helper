@@ -10,7 +10,9 @@ class SubscriptionsController < ApplicationController
     @group = @subscription.group
 
     if @subscription.save
-      redirect_to @subscription.group, notice: "You have subscribed to #{@group.name}, and will recieve notifications about it."
+      redirect_to @subscription.group,
+                  notice: I18n.t('subscriptions.created',
+                                 group_name: @group.name)
     else
       render @subscription.group || groups_path, status: :bad_request
     end
@@ -21,7 +23,9 @@ class SubscriptionsController < ApplicationController
     @group = @subscription.group
     @subscription.destroy
 
-    redirect_to @group, notice: "You have unsubscribed from #{@group.name}."
+    redirect_to @group,
+                notice: I18n.t('subscriptions.destroyed',
+                               group_name: @group.name)
   end
 
   private

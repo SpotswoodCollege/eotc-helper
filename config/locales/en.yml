@@ -30,4 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  subscriptions:
+    created: -<
+      You have subscribed to %{group_name}, and will recieve notifications about it.
+    destroyed: -<
+    You have unsubscribed from %{@group_name}.
