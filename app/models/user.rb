@@ -9,13 +9,16 @@ class User < ApplicationRecord
 
   validates :role, presence: true,
                    inclusion: { in: ROLES,
-                                message: 'must be a valid role' }
+                                message:
+                                  I18n.translate('error.brief.valid_rel',
+                                                 rel: 'role') }
 
   # Is the user's role greater than or equal to the given role?
   def role_greater_or_equal_to?(other_role)
     other_role = other_role.to_s || ''
 
     # If the given role is not valid, raise
+    # REVIEW: Should this use I18n?
     raise "No such role #{other_role}" unless ROLES.include? other_role
 
     other_role_index = ROLES.index other_role
@@ -30,6 +33,7 @@ class User < ApplicationRecord
     other_role = other_role.to_s || ''
 
     # If the given role is not valid, raise
+    # REVIEW: Should this use I18n?
     raise "No such role #{other_role}" unless ROLES.include? other_role
 
     role == other_role

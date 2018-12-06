@@ -67,12 +67,32 @@ en:
         Description
       no_description:
         No description given.
+    subscriptions:
+      created:
+        You have subscribed to %{group_name}, and will recieve notifications about it.
+      destroyed:
+        You have unsubscribed from %{group_name}.
+  error:
+    general:
       error:
         error
       error_message:
-        Sorry! %{pluralised_error} prevented this group from being saved.
-  subscriptions:
-    created:
-      You have subscribed to %{group_name}, and will recieve notifications about it.
-    destroyed:
-      You have unsubscribed from %{group_name}.
+        Sorry! %{pluralised_error} prevented this %{type} from being saved.
+    brief:
+      no_blank:
+        can't be blank
+      unique:
+        must be unique
+      belong_to:
+        must belong to a %{rel}
+      valid:
+        must be valid
+      valid_rel:
+        must be a valid %{rel}
+      log_in:
+        must be logged in
+    permission:
+      need_log_in:
+        You must log in to do that.
+      denied:
+        You do not have the permission to do that.
