@@ -2,6 +2,7 @@ require 'test_helper'
 
 class GroupsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
+  include Rails.application.routes.url_helpers
 
   test 'should get index' do
     get groups_url
@@ -12,27 +13,34 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   test 'should not create group with standard role' do
     sign_in users(:average_joe)
     assert_raises 'RuntimeError: Must be logged in' do
-      group = Group.new name: 'PEH101',
-                        description: 'Physical Education Level 1'
-      group.save!
+      post groups_url group: { name: 'PEH101',
+                               description: 'Physical Education Level 1',
+                               creator: user.id }
     end
   end
 
-  test 'should be able to create group as teacher' do
-    sign_in users(:teacher_kate)
-    group = Group.new name: 'PEH101', description: 'Physical Education Level 1'
-    assert group.save
+  test 'should be able to create group' do
+    user = users(:teacher_kate)
+    sign_in user
+    post groups_url group: { name: 'PEH101',
+                             description: 'Physical Education Level 1',
+                             creator: user.id }
+    assert_response :found, 'Teacher could not save group'
   end
 
   test 'should not be able to create group with blank name' do
-    sign_in users(:teacher_kate)
-    group = Group.new description: 'Physical Education Level 1'
-    assert_not group.save
+    user = users(:teacher_kate)
+    sign_in user
+    post groups_url group: { description: 'Physical Education Level 1',
+                             creator: user.id }
+    assert_response :bad_request, 'Group was saved nameless'
   end
 
   test 'should be able to create group with blank description' do
-    sign_in users(:teacher_kate)
-    group = Group.new name: 'PEH101'
-    assert group.save
+    user = users(:teacher_kate)
+    sign_in user
+    post groups_url group: { name: 'PEH101',
+                             creator: user.id }
+    assert_response :found, 'Group without description was not saved'
   end
 end
