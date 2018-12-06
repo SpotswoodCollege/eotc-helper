@@ -79,7 +79,7 @@ en:
       no_description:
         No description given.
     # TODO should be 'subscription'
-    subscriptions:
+    subscription:
       created:
         You have subscribed to %{group_name}, and will recieve notifications about it.
       destroyed:

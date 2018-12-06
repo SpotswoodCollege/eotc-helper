@@ -11,7 +11,7 @@ class SubscriptionsController < ApplicationController
 
     if @subscription.save
       redirect_to @subscription.group,
-                  notice: I18n.t('labels.group.subscriptions.created',
+                  notice: I18n.t('labels.subscription.created',
                                  group_name: @group.name)
     else
       render @subscription.group || groups_path, status: :bad_request
@@ -24,7 +24,7 @@ class SubscriptionsController < ApplicationController
     @subscription.destroy
 
     redirect_to @group,
-                notice: I18n.t('labels.group.subscriptions.destroyed',
+                notice: I18n.t('labels.subscription.destroyed',
                                group_name: @group.name)
   end
 
