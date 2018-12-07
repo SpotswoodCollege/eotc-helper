@@ -60,14 +60,24 @@ en:
       delete:
         Unsubscribe
     group:
+      new_a:
+        Make a New Group
       new:
         New Group
+      create_a:
+        Create a Group
       create:
         Create Group
+      edit_a:
+        Edit a Group
       edit:
         Edit Group
+      update_a:
+        Confirm an Edit
       update:
         Confirm Edit
+      delete_a:
+        Delete a Group
       delete:
         Delete Group
   labels:
@@ -195,5 +205,11 @@ en:
     permission:
       need_log_in:
         You must log in to do that.
+      need_log_in_rel:
+        Log in to %{rel}
       denied:
         You do not have the permission to do that.
+      log_in:
+        Log in
+      to_rel:
+        to %{rel}
