@@ -11,7 +11,8 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not create group with standard role' do
-    sign_in users(:average_joe)
+    user = users(:average_joe)
+    sign_in user
     assert_raises 'RuntimeError: Must be logged in' do
       post groups_url group: { name: 'PEH101',
                                description: 'Physical Education Level 1',
@@ -42,5 +43,36 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     post groups_url group: { name: 'PEH101',
                              creator: user.id }
     assert_response :found, 'Group without description was not saved'
+  end
+
+  test 'should not edit group with standard role' do
+    peh101 = Group.create(name: 'PEH101',
+                          description: 'Physical Education',
+                          creator: users(:teacher_kate).id)
+    peh101.save!
+
+    user = users(:average_joe)
+    sign_in user
+
+    assert_raises 'RuntimeError: Must be logged in' do
+      patch group_url(peh101), params: { group: { name: 'PEH101',
+                                                  description: 'Physical Education Level 1',
+                                                  creator: user.id } }
+    end
+  end
+
+  test 'should be able to edit group' do
+    peh101 = Group.create(name: 'PEH101',
+                          description: 'Physical Education',
+                          creator: users(:teacher_kate).id)
+    peh101.save!
+
+    user = users(:teacher_kate)
+    sign_in user
+
+    patch group_url(peh101), params: { group: { name: 'PEH101',
+                                                description: 'Physical Education Level 1',
+                                                creator: user.id } }
+    assert_response :found, 'Group was not edited'
   end
 end
