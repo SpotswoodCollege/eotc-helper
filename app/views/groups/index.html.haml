@@ -1,5 +1,6 @@
 %h1 Groups
-= link_to t('buttons.group.new'), new_group_path
+- if can? :create, Group
+  = link_to t('buttons.group.new'), new_group_path
 %ul
   - @groups.each do |group|
     %li

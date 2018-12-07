@@ -7,6 +7,7 @@
 %p
   = render 'subscriptions/button', locals: {group: @group}
 %p
-  = link_to t('buttons.group.edit'), edit_group_path(@group)
-  |
+  - if can? :edit, @group
+    = link_to t('buttons.group.edit'), edit_group_path(@group)
+    |
   = link_to t('buttons.general.back'), groups_path
