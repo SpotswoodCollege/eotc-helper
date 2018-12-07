@@ -1,0 +1,6 @@
+- if user_signed_in?
+  = button_to t('buttons.account.log_out'), destroy_user_session_path, method: :delete
+  = link_to   t('buttons.account.settings'), edit_user_registration_path
+- else
+  = link_to   t('buttons.account.sign_up'),  new_user_registration_path
+  = link_to   t('buttons.account.log_in'),  new_user_session_path
