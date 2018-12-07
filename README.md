@@ -162,3 +162,4 @@ Thanks to all the wonderful resources we are using!
 
 -   [Rails Guides](http://guides.rubyonrails.org/)
 -   [Rails Tutorial](https://www.railstutorial.org/)
+-   [TKI's EOTC documentation](http://eotc.tki.org.nz/EOTC-home/EOTC-Guidelines) for the examples of various types and risk levels for activities
