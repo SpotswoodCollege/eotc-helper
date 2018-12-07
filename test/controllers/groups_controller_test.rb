@@ -55,9 +55,10 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     assert_raises 'RuntimeError: Must be logged in' do
-      patch group_url(peh101), params: { group: { name: 'PEH101',
-                                                  description: 'Physical Education Level 1',
-                                                  creator: user.id } }
+      patch group_url(peh101), params: { group:
+        { name: 'PEH101',
+          description: 'Physical Education Level 1',
+          creator: user.id } }
     end
   end
 
@@ -70,9 +71,11 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     user = users(:teacher_kate)
     sign_in user
 
-    patch group_url(peh101), params: { group: { name: 'PEH101',
-                                                description: 'Physical Education Level 1',
-                                                creator: user.id } }
+    patch group_url(peh101), params: { group:
+      { name: 'PEH101',
+        description: 'Physical Education Level 1',
+        creator: user.id } }
+
     assert_response :found, 'Group was not edited'
   end
 end
