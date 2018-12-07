@@ -126,7 +126,7 @@ en:
           brief:
             Multi-Day or Extraregional
           detail:
-            # TODO Make sure this is given `region: I18n.translate('school.location.region')` or equivalent
+            # Make sure this is given `region: I18n.translate('school.location.region')` or equivalent
             extending overnight or taking place outside %{region}
       risk_level:
         low:
