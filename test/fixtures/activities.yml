@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# one:
+#   name: MyString
+#   description: MyText
+#   type:
+#   risk: MyString
+#   edited_at: 2018-12-08 17:56:09
+#   approved_at: 2018-12-08 17:56:09
+#   occurs_at: 2018-12-08 17:56:09
+#   finishes_at: 2018-12-08 17:56:09
+#   creator: 1
+#
+# two:
+#   name: MyString
+#   description: MyText
+#   type:
+#   risk: MyString
+#   edited_at: 2018-12-08 17:56:09
+#   approved_at: 2018-12-08 17:56:09
+#   occurs_at: 2018-12-08 17:56:09
+#   finishes_at: 2018-12-08 17:56:09
+#   creator: 1
