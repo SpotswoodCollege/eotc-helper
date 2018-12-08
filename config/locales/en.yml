@@ -80,6 +80,27 @@ en:
         Delete a Group
       delete:
         Delete Group
+    activity:
+      new_a:
+        Make a New Activity
+      new:
+        New Activity
+      create_a:
+        Create an Activity
+      create:
+        Create Activity
+      edit_a:
+        Edit an Activity
+      edit:
+        Edit Activity
+      update_a:
+        Confirm an Edit
+      update:
+        Confirm Edit
+      delete_a:
+        Delete an Activity
+      delete:
+        Delete Activity
   labels:
     group:
       name:

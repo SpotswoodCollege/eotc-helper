@@ -1,0 +1,11 @@
+%h1
+  \##{@activity.id}:
+  %em= @activity.name
+%p
+%em
+  = @activity.description || t('labels.activity.no_description')
+%p
+  - if can? :edit, @activity
+    = link_to t('buttons.activity.edit'), edit_activity_path(@activity)
+    |
+  = link_to t('buttons.general.back'), activities_path

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :groups
   resources :subscriptions
+  resources :activities
 
   root 'welcome#index'
 end
