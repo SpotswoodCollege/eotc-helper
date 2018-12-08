@@ -2,7 +2,7 @@
 
 ## `Activity`
 
-__not yet implemented__
+__partially implemented__
 
 -   Has and belongs to many `Groups`
 -   `name`: string
