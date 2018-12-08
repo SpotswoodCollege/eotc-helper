@@ -1,0 +1,40 @@
+= form_with model: @activity, local: true do |form|
+  - if @activity.errors.any?
+    #error_explanation
+      %h2
+        = t('errors.general.error_message', pluralised_error: pluralize(@activity.errors.count, t('errors.general.error')), type: 'activity')
+      %ul
+        - @activity.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = form.label :name, t('labels.activity.name')
+    %br/
+    = form.text_field :name
+  %p
+    = form.label :description, t('labels.activity.description')
+    %br/
+    = form.text_area :description
+  %p
+    Activity type:
+    %br
+    - %w[in_school community day_trip multi_day].each do |activity_type|
+      %span{id: 'activity_type_' + activity_type}
+        = form.radio_button :activity_type, activity_type
+        = form.label :activity_type, t("labels.activity.type.#{activity_type}.brief"), value: activity_type
+  %p
+    Activity risk level:
+    %br
+    - %w[low high].each do |risk|
+      %span{:id => 'risk_' + risk}
+        = form.radio_button :risk, risk
+        = form.label :risk, t("labels.activity.risk_level.#{risk}"), value: risk
+  %div{style: 'display: none;'}
+    Examples:
+    - %w[in_school community day_trip multi_day].each do |activity_type|
+      - %w[low_risk high_risk].each do |risk|
+        %ul{:id => "example_" + activity_type + "_" + risk, style: 'display: none;'}
+          - t("labels.activity.examples.#{activity_type}.#{risk}").each do |example|
+            %li= example
+
+  %p
+    = form.submit t("buttons.activity.#{action}")
