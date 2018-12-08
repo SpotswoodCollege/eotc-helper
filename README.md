@@ -8,6 +8,8 @@
 
 Education Outside the Classroom Helper is a Rails web app for helping teachers organize class trips, without lots of paperwork. It is currently unfinished.
 
+__DISCLAIMER: Do not attempt to run eotc-helper in a production environment yet! It is not finished, and may lack features, have bugs, or crash entirely!__
+
 ## Status
 
 [![Build Status](https://travis-ci.org/SpotswoodCollege/eotc-helper.svg?branch=master)](https://travis-ci.org/SpotswoodCollege/eotc-helper)
@@ -30,6 +32,22 @@ The app will be built around a user model, with accounts of differing privilege 
 -   Board of Trustees members and the EOTC coordinator (coordinator-level accounts) can remove, edit, and approve trips
 
 All accounts have the privileges of lesser accounts. Accounts can only be escalated to higher permission levels by the System Administrator (admin account). Anyone can register a student account.
+
+## Customisation
+
+This version of eotc-helper will not be much use to any schools other than Spotswood, because the logos and text are Spotswood's. However, you can change this! Here is a guide to customisting eotc-helper to meet your needs (it must be run on __Mac or Linux__):
+
+1. Firstly, [fork](https://help.github.com/articles/fork-a-repo/) this repository on Github, and [clone](https://help.github.com/articles/cloning-a-repository/) it locally.
+2. Install [Ruby](https://www.ruby-lang.org/en/) and [Bundler](https://bundler.io/), and run `bundle install` in a terminal in the `eotc-helper` folder - this installs the dependencies needed
+3. Change the logo at `app/assets/images/spotswood_logo.png` to any __square__ image with a __transparent background__.
+4. Change `config/favicon.json` `line 2` to have the path to the new image from step 3
+  - `"master_picture": "app/assets/images/[image name here]",`
+5. Change any other settings in here as needed
+6. To generate the new icons, run `rails generate favicon`
+7. Enter `y` for any prompts to overwrite files
+8. Open `config/locales/en.yml` and change the school details near the top
+
+You are now finished! [Push](https://help.github.com/articles/pushing-to-a-remote/) your changes to your fork, and run the installation instructions!
 
 ## Contribution
 
