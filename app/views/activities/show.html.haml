@@ -2,6 +2,12 @@
   \##{@activity.id}:
   %em= @activity.name
 %p
+%p
+  Type:
+  = t("labels.activity.type.#{@activity.activity_type}.brief")
+%p
+  Risk level:
+  = t("labels.activity.risk.#{@activity.risk}")
 %em
   = @activity.description || t('labels.activity.no_description')
 %p
