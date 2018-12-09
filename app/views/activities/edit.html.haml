@@ -1,0 +1,5 @@
+%h1
+  = t 'buttons.activity.edit'
+
+= render 'form', action: 'update'
+= link_to t('buttons.general.back'), activity_path(@activity)

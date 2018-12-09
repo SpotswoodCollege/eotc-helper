@@ -11,6 +11,10 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
   end
 
+  def edit
+    @activity = Activity.find(params[:id])
+  end
+
   def create
     @activity = Activity.new(activity_params)
 
@@ -21,6 +25,17 @@ class ActivitiesController < ApplicationController
       redirect_to @activity
     else
       render 'new', status: :bad_request
+    end
+  end
+
+  def update
+    @activity = Activity.find(params[:id])
+    @activity.edited_at = @activity.updated_at
+
+    if @activity.update(activity_params)
+      redirect_to @activity
+    else
+      render 'edit', status: :bad_request
     end
   end
 
