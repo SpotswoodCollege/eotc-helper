@@ -31,11 +31,13 @@ class Ability
 
     #---# GENERAL
 
+    alias_action :create, :read, :update, :destroy, to: :crud
+
     # Guest user
     user ||= User.new
 
     # Administrators can do everything
-    can :manage, :all if user.role_gte? :administrator
+    can :manage, :all if user.of_group? :administrators
 
     #---# GROUPS
 
@@ -43,10 +45,10 @@ class Ability
     can :read, Group
 
     # Teachers can create groups
-    can :create, Group if user.role_gte? :teacher
+    can :create, Group if user.of_group? :teachers
 
     # Teachers can manage their groups
-    can :manage, Group, creator: user.id if user.role? :teacher
+    can :manage, Group, creator: user.id if user.of_group? :teachers
 
     # Coordinators can manage all groups
     can :manage, Group if user.role_gte? :coordinator
@@ -56,7 +58,28 @@ class Ability
     # Can subscribe
     can :create, Subscription if user.present?
 
-    # Can read own subscriptions
+    # Can read / destroy own subscriptions
     can %i[read destroy], Subscription, user_id: user.id if user.present?
+
+    #---# ACTIVITIES
+
+    # Anyone can see approved activities
+    can :read, Activity, &:approved?
+
+    # Teachers can see all activities, and create more
+    can %i[read create], Activity if user.of_group? :teachers
+
+    # Teachers can manage their activities
+    can :crud, Activity, creator: user.id if user.of_group? :teachers
+
+    # Coordinators can manage all activities
+    can :crud, Activity if user.role_gte? :coordinator
+
+    # Only some users can approve activities
+    # Decided by the Activity model
+    cannot :approve, Activity
+    can :approve, Activity do |activity|
+      activity.can_be_approved_by? user
+    end
   end
 end

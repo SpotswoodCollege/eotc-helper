@@ -1,6 +1,20 @@
 # Defines a User. Users can have roles.
 class User < ApplicationRecord
-  ROLES = %w[standard teacher coordinator administrator].freeze
+  ROLES = %i[standard
+             teacher
+             senior_teacher
+             coordinator
+             principal
+             board
+             administrator].freeze
+
+  ROLE_GROUPS = {
+    standard: %i[standard],
+    teachers: %i[teacher senior_teacher coordinator],
+    principals: %i[principal],
+    board: %i[board],
+    administrators: %i[administrator]
+  }.freeze
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, and :omniauthable
@@ -14,14 +28,14 @@ class User < ApplicationRecord
 
   # Is the user's role greater than or equal to the given role?
   def role_greater_or_equal_to?(other_role)
-    other_role = other_role.to_s || ''
+    other_role = other_role.to_sym || ''
 
     # If the given role is not valid, raise
     # REVIEW: Should this use I18n?
     raise "No such role #{other_role}" unless ROLES.include? other_role
 
     other_role_index = ROLES.index other_role
-    role_index       = ROLES.index role
+    role_index       = ROLES.index role.to_sym
 
     role_index >= other_role_index
   end
@@ -29,13 +43,23 @@ class User < ApplicationRecord
   alias role_gte? role_greater_or_equal_to?
 
   def role?(other_role)
-    other_role = other_role.to_s || ''
+    other_role = other_role.to_sym || ''
 
     # If the given role is not valid, raise
     # REVIEW: Should this use I18n?
-    raise "No such role #{other_role}" unless ROLES.include? other_role
+    raise "No such role #{other_role}" unless other_role.in? ROLES
 
     role == other_role
+  end
+
+  def of_group?(group)
+    group = group.to_sym
+
+    # If the given group is not valid, raise
+    # REVIEW: Should this use I18n?
+    raise "No such group #{group}" unless group.in? ROLE_GROUPS.keys
+
+    role.in? ROLE_GROUPS[group]
   end
 
   has_many :subscriptions, dependent: :destroy
