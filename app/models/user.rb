@@ -41,5 +41,5 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :groups, through: :subscriptions
 
-  # has_many :activities, through: :groups
+  has_many :activities, through: :groups
 end

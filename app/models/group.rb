@@ -7,6 +7,6 @@ class Group < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :users, through: :subscriptions
 
-  # has_many :assignments
-  # has_many :activities, through: :assignments
+  has_many :assignments
+  has_many :activities, through: :assignments
 end

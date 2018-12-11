@@ -1,0 +1,10 @@
+-# REVIEW: Do we need this view?
+%h1 Assignments
+- if @assignments.any?
+  %ul
+    - @assignments.each do |assignment|
+      - if assignment.activity
+        %li
+          = link_to (assignment.activity.name + ' / ' + assignment.group.name), activity_path(assignment.activity)
+- else
+  %p No assignments
