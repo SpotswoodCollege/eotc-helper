@@ -49,8 +49,8 @@ class Activity < ApplicationRecord
     }
   }.freeze
 
-  has_many :assignments
-  has_many :groups, through: :assignments
+  has_many :assignments, dependent: :destroy
+  has_many :groups, through: :assignments, uniq: true
 
   has_many :users, through: :groups
 

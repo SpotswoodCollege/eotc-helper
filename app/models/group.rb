@@ -5,8 +5,8 @@ class Group < ApplicationRecord
   validates :creator, presence: { message: I18n.t('error.brief.log_in') }
 
   has_many :subscriptions, dependent: :destroy
-  has_many :users, through: :subscriptions
+  has_many :users, through: :subscriptions, uniq: true
 
-  has_many :assignments
-  has_many :activities, through: :assignments
+  has_many :assignments, dependent: :destroy
+  has_many :activities, through: :assignments, uniq: true
 end
