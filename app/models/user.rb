@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
 
   has_many :subscriptions, dependent: :destroy
-  has_many :groups, through: :subscriptions, uniq: true
+  has_many :groups, -> { distinct }, through: :subscriptions
 
   has_many :activities, through: :groups
 end
