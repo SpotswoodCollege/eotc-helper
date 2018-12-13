@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_202943) do
     t.datetime "approved_at"
     t.datetime "occurs_at"
     t.datetime "finishes_at"
+    # TODO: Make creator a `bigint`
     t.integer "creator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_202943) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    # TODO: Make this a `bigint`
     t.integer "creator"
   end
 
