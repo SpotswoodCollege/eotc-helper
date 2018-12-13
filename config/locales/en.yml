@@ -101,6 +101,10 @@ en:
         Delete an Activity
       delete:
         Delete Activity
+      approve:
+        Approve Activity
+      approve_a:
+        Approve an Activity
   labels:
     group:
       name:

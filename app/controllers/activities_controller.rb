@@ -31,11 +31,9 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find(params[:id])
 
-    if activity_params[:approve] == true
-      # Approve activity
-      @activity.approved_at = Time.now if activity_params[:approve] == true &&
-                                          can?(:approve, @activity)
-      if @activity.update
+    if activity_params[:approve] == 'true'
+      authorize! :approve, @activity
+      if @activity.update(approved_at: Time.now)
         redirect_to @activity
       else
         render 'edit', status: :bad_request

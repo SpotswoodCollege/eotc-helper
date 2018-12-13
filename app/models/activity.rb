@@ -56,7 +56,7 @@ class Activity < ApplicationRecord
 
   def can_be_approved_by?(user)
     approval = Array(approval_needed)
-    user.role.in? approval
+    user.role.in?(approval) || user.role_gte?(:administrator)
   end
 
   def parental_consent
@@ -78,7 +78,7 @@ class Activity < ApplicationRecord
   private
 
   def approval_needed
-    data = ACTIVITY_DATA[activity_type.to_sym][risk.to_sym]
+    data = ACTIVITY_DATA[activity_type.to_sym][(risk.to_s + '_risk').to_sym]
     data[:approval]
   end
 end

@@ -2,6 +2,7 @@
   \##{@activity.id}:
   %em= @activity.name
 %p
+  = render 'approve_button'
 %p
   Type:
   = t("labels.activity.type.#{@activity.activity_type}.brief")
