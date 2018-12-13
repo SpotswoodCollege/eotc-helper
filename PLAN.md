@@ -2,8 +2,6 @@
 
 ## `User`
 
-_implemented_
-
 -   Devise setup: `:database_authenticatable, :confirmable, :registerable, :recoverable, :rememberable, :validatable, :trackable`
 -   `role`: string
 -   Can be `standard`, `teacher`, `coordinator`, or `administrator`
@@ -18,8 +16,6 @@ has_many :activities, through: :groups
 
 ## `Subscription`
 
-_implemented_
-
 -   Links `Users` and `Groups`
 
 ```ruby
@@ -28,8 +24,6 @@ belongs_to :group
 ```
 
 ## `Group`
-
-_implemented_
 
 -   Has and belongs to many `Activities`
 -   Has and belongs to many `Users`
@@ -47,8 +41,6 @@ has_many :activities, through: :assignments
 
 ## `Assignment`
 
-_implemented_
-
 -   Links `Groups` and `Activities`
 
 ```ruby
@@ -57,8 +49,6 @@ belongs_to :activity
 ```
 
 ## `Activity`
-
-_implemented_
 
 -   Has and belongs to many `Groups`
 -   `name`: string
