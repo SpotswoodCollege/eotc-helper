@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_202943) do
+ActiveRecord::Schema.define(version: 2018_12_13_014619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_202943) do
     t.datetime "approved_at"
     t.datetime "occurs_at"
     t.datetime "finishes_at"
-    # TODO: Make creator a `bigint`
-    t.integer "creator"
+    t.bigint "creator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_activities_on_name", unique: true
@@ -45,13 +44,12 @@ ActiveRecord::Schema.define(version: 2018_12_11_202943) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    # TODO: Make this a `bigint`
-    t.integer "creator"
+    t.bigint "creator"
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.bigint "group_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
