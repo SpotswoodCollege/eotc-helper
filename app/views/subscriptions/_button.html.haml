@@ -1,0 +1,9 @@
+- if user_signed_in?
+  - subscription = Subscription.find_by group_id: @group.id, user_id: current_user
+  - if subscription
+    = button_to t('buttons.subscription.delete'), subscription_path(subscription), method: :delete
+  - else
+    = button_to t('buttons.subscription.create'),   subscriptions_path(group_id: @group.id, user_id: current_user)
+- else
+  = link_to t('error.permission.log_in'), new_user_session_path
+  = t 'error.permission.to_rel', rel: t('buttons.subscription.create').downcase

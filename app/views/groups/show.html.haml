@@ -1,0 +1,13 @@
+%h1
+  \##{@group.id}:
+  %em= @group.name
+%p
+%em
+  = @group.description || t('labels.group.no_description')
+%p
+  = render 'subscriptions/button', locals: {group: @group}
+%p
+  - if can? :edit, @group
+    = link_to t('buttons.group.edit'), edit_group_path(@group)
+    |
+  = link_to t('buttons.general.back'), groups_path

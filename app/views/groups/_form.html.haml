@@ -1,0 +1,18 @@
+= form_with model: @group, local: true do |form|
+  - if @group.errors.any?
+    #error_explanation
+      %h2
+        = t('errors.general.error_message', pluralised_error: pluralize(@group.errors.count, t('errors.general.error')), type: 'group')
+      %ul
+        - @group.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = form.label :name, t('labels.group.name')
+    %br/
+    = form.text_field :name
+  %p
+    = form.label :description, t('labels.group.description')
+    %br/
+    = form.text_area :description
+  %p
+    = form.submit t("buttons.group.#{action}")

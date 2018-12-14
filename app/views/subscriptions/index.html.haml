@@ -1,0 +1,10 @@
+-# REVIEW: Do we need this view?
+%h1 Subscriptions
+- if @subscriptions.any?
+  %ul
+    - @subscriptions.each do |subscription|
+      - if subscription.group
+        %li
+          = link_to subscription.group.name, group_path(subscription.group)
+- else
+  %p No subscriptions
