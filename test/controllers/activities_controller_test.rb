@@ -61,4 +61,29 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_response :found,
                     'Teacher could not save activity with blank description'
   end
+
+  test 'should not approve with standard role' do
+    user = users(:average_joe)
+    sign_in user
+    assert_raises 'CanCan::AccessDenied' do
+      patch activity_url(activities(:beach_trip)),
+            params: { activity: { approve: true } }
+    end
+  end
+
+  test 'should not approve community high risk activity as teacher' do
+    user = users(:teacher_kate)
+    sign_in user
+    assert_raises 'CanCan::AccessDenied' do
+      patch activity_url(activities(:beach_trip)),
+            params: { activity: { approve: true } }
+    end
+  end
+
+  test 'should approve community high risk activity as senior teacher' do
+    user = users(:senior_teacher_bob)
+    sign_in user
+    patch activity_url(activities(:beach_trip)),
+          params: { activity: { approve: true } }
+  end
 end
