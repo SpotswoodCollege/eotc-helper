@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   load_and_authorize_resource
+  skip_authorize_resource :only => :update
 
   def index
     @activities = Activity.all
@@ -46,9 +47,9 @@ class ActivitiesController < ApplicationController
 
   # Edit activity
   def update_update
-    @activity.edited_at = Time.current
+    authorize! :update, @activity
 
-    if @activity.update(activity_params_no_approve)
+    if @activity.update(activity_params_no_approve, edited_at: Time.current)
       redirect_to @activity
     else
       render 'edit', status: :bad_request
