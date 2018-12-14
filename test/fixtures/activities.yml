@@ -1,23 +1,45 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # one:
-#   name: MyString
-#   description: MyText
+#   name:          MyString
+#   description:   MyText
 #   type:
-#   risk: MyString
-#   edited_at: 2018-12-08 17:56:09
-#   approved_at: 2018-12-08 17:56:09
-#   occurs_at: 2018-12-08 17:56:09
-#   finishes_at: 2018-12-08 17:56:09
-#   creator: 1
+#   risk:          MyString
+#   edited_at:     2018-12-08 17:56:09
+#   approved_at:   2018-12-08 17:56:09
+#   occurs_at:     2018-12-08 17:56:09
+#   finishes_at:   2018-12-08 17:56:09
+#   creator:       1
 #
 # two:
-#   name: MyString
-#   description: MyText
+#   name:          MyString
+#   description:   MyText
 #   type:
-#   risk: MyString
-#   edited_at: 2018-12-08 17:56:09
-#   approved_at: 2018-12-08 17:56:09
-#   occurs_at: 2018-12-08 17:56:09
-#   finishes_at: 2018-12-08 17:56:09
-#   creator: 1
+#   risk:          MyString
+#   edited_at:     2018-12-08 17:56:09
+#   approved_at:   2018-12-08 17:56:09
+#   occurs_at:     2018-12-08 17:56:09
+#   finishes_at:   2018-12-08 17:56:09
+#   creator:       1
+
+beach_trip:
+  name:            Beach Trip
+  description:     A trip to the beach. Whole school can come!
+  activity_type:   community
+  risk:            high
+  edited_at:       null
+  approved_at:     null
+  occurs_at:       <%= 2.days.from_now.midday %>
+  finishes_at:     <%= 2.days.from_now.midday + 2.hours %>
+  creator:         <%= User.find_by(email: 'edu.kate@example.com').id %>
+
+code_club:
+  name:          Code Club
+  description:   null
+  activity_type: in_school
+  risk:          low
+  edited_at:     null
+  approved_at:   null
+  occurs_at:     <%= 2.days.from_now.midday %>
+  finishes_at:   <%= 2.days.from_now.midday + 2.hours %>
+  creator:       <%= User.find_by(email: 'edu.kate@example.com').id %>
