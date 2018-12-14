@@ -53,7 +53,7 @@ class Ability
     can :read,                  Activity, &:approved?
     can %i[read update delete], Activity, creator: user.id
     cannot :approve,            Activity
-    can :approve,               Activity do |activity|
+    can    :approve,            Activity do |activity|
       activity.can_be_approved_by? user
     end
 

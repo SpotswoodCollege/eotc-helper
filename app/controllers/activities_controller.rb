@@ -58,6 +58,7 @@ class ActivitiesController < ApplicationController
   # Approve activity
   def update_approve
     authorize! :approve, @activity
+
     if @activity.update(approved_at: Time.current)
       redirect_to @activity
     else
