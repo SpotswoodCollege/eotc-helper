@@ -49,6 +49,11 @@ class Activity < ApplicationRecord
     }
   }.freeze
 
+  validates :name, presence:   { message: I18n.t('error.brief.no_blank') },
+                   uniqueness: { message: I18n.t('error.brief.unique') }
+
+  validates :creator, presence: { message: I18n.t('error.brief.log_in') }
+
   has_many :assignments, dependent: :destroy
   has_many :groups, -> { distinct }, through: :assignments
 
