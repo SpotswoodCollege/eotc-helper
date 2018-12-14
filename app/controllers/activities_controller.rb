@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource :only => :update
+  skip_authorize_resource only: :update
 
   def index
     @activities = Activity.all
