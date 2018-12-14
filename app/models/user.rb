@@ -60,7 +60,7 @@ class User < ApplicationRecord
     # REVIEW: Should this use I18n?
     raise "No such group #{group}" unless group.in? ROLE_GROUPS.keys
 
-    role.in? ROLE_GROUPS[group]
+    role.to_sym.in? ROLE_GROUPS[group]
   end
 
   has_many :subscriptions, dependent: :destroy
