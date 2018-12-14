@@ -6,10 +6,10 @@ AllCops:
     - 'bin/*'
 
 Rails:
-  Enabled:            true
+  Enabled:                     true
 
 Style/Documentation:
-  Enabled:            false
+  Enabled:                     false
 
 Metrics/AbcSize:
   Exclude:
@@ -18,3 +18,11 @@ Metrics/AbcSize:
 Metrics/CyclomaticComplexity:
   Exclude:
     - app/models/ability.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - app/models/ability.rb
+
+Metrics/PerceivedComplexity:
+    Exclude:
+      - app/models/ability.rb
