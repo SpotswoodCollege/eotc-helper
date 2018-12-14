@@ -32,27 +32,36 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
 
     if activity_params[:approve] == 'true'
-      authorize! :approve, @activity
-      if @activity.update(approved_at: Time.now)
-        redirect_to @activity
-      else
-        render 'edit', status: :bad_request
-      end
+      update_approve
     elsif would_change(activity_params_no_approve, @activity)
-      # Edit activity
-      @activity.edited_at = Time.now
-
-      if @activity.update(activity_params_no_approve)
-        redirect_to @activity
-      else
-        render 'edit', status: :bad_request
-      end
+      update_update
     else
       redirect_to @activity || activities_path
     end
   end
 
   private
+
+  # Edit activity
+  def update_update
+    @activity.edited_at = Time.current
+
+    if @activity.update(activity_params_no_approve)
+      redirect_to @activity
+    else
+      render 'edit', status: :bad_request
+    end
+  end
+
+  # Approve activity
+  def update_approve
+    authorize! :approve, @activity
+    if @activity.update(approved_at: Time.current)
+      redirect_to @activity
+    else
+      render 'edit', status: :bad_request
+    end
+  end
 
   def activity_params
     params.require(:activity).permit(:name,
