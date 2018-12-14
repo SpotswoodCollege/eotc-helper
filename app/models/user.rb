@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   ROLE_GROUPS = {
     standard: %i[standard],
+    staff: %i[teacher senior_teacher coordinator principal],
     teachers: %i[teacher senior_teacher coordinator],
     principals: %i[principal],
     board: %i[board],
