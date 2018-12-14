@@ -16,18 +16,18 @@ class Activity < ApplicationRecord
     },
     community: {
       low_risk: {
-        approval: %i[senior coordinator],
+        approval: %i[senior_teacher coordinator],
         parental_consent: %i[none blanket],
         risk_management_planning: :generic
       }, high_risk: {
-        approval: %i[senior coordinator],
+        approval: %i[senior_teacher coordinator],
         parental_consent: %i[blanket separate],
         risk_management_planning: :generic
       }
     },
     day_trip:  {
       low_risk: {
-        approval: %i[senior coordinator],
+        approval: %i[senior_teacher coordinator],
         parental_consent: %i[none blanket],
         risk_management_planning: :generic
       }, high_risk: {
