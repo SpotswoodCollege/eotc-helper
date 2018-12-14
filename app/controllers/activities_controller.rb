@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @activities = Activity.all
   end
