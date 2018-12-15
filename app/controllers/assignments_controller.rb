@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
   load_and_authorize_resource
-  
+
   def index
     @assignments = Assignment.all
   end
