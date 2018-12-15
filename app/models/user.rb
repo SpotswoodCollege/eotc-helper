@@ -65,6 +65,10 @@ class User < ApplicationRecord
     role.to_sym.in? ROLE_GROUPS[group]
   end
 
+  def t_role
+    I18n.t("labels.user.role.#{role}")
+  end
+
   has_many :subscriptions, dependent: :destroy
   has_many :groups, -> { distinct }, through: :subscriptions
 

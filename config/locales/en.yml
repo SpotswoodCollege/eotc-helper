@@ -106,6 +106,22 @@ en:
       approve_a:
         Approve an Activity
   labels:
+    user:
+      role:
+        standard:
+          Standard
+        teacher:
+          Teacher
+        senior_teacher:
+          Senior Teacher
+        coordinator:
+          EOTC Coordinator
+        principal:
+          Principal
+        board:
+          Board Member
+        administrator:
+          Administrator
     group:
       name:
         Name
