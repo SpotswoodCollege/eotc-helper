@@ -49,7 +49,10 @@ class ActivitiesController < ApplicationController
   def update_update
     authorize! :update, @activity
 
-    if @activity.update(activity_params_no_approve.merge(edited_at: Time.current))
+    success = @activity.update activity_params_no_approve.merge(edited_at:
+                                                                Time.current)
+
+    if success
       redirect_to @activity
     else
       render 'edit', status: :bad_request
