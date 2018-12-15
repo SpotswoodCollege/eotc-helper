@@ -64,6 +64,9 @@ gem 'devise'
 # Use CanCanCan for roles and permissions
 gem 'cancancan', '~> 2.3'
 
+# Use formtastic for nice form DSL
+gem 'formtastic', '~> 3.0'
+
 # Use Letter Opener for development mail previews
 gem 'letter_opener', group: :development
 

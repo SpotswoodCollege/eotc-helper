@@ -95,6 +95,8 @@ GEM
       responders
     execjs (2.7.0)
     ffi (1.9.25)
+    formtastic (3.1.5)
+      actionpack (>= 3.2.13)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -259,6 +261,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   exception_handler (~> 0.8.0.0)
+  formtastic (~> 3.0)
   haml
   jbuilder (~> 2.8)
   letter_opener
