@@ -1,5 +1,6 @@
 # Defines a User. Users can have roles.
 class User < ApplicationRecord
+  # TODO: Move to config?
   ROLES = %i[standard
              teacher
              senior_teacher
@@ -8,6 +9,7 @@ class User < ApplicationRecord
              board
              administrator].freeze
 
+  # TODO: Move to config?
   ROLE_GROUPS = {
     standard: %i[standard],
     staff: %i[teacher senior_teacher coordinator principal],
