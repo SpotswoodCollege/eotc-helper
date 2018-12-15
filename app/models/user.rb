@@ -52,7 +52,7 @@ class User < ApplicationRecord
     # REVIEW: Should this use I18n?
     raise "No such role #{other_role}" unless other_role.in? ROLES
 
-    role == other_role
+    role.to_sym == other_role
   end
 
   def of_group?(group)
