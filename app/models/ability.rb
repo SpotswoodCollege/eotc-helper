@@ -51,7 +51,7 @@ class Ability
     # Can read approved activities; can manage own activities; delegate approval
     #   to Activity model
     can :read,                  Activity, &:approved?
-    can %i[read update delete], Activity, creator: user.id
+    can %i[read update delete], Activity, creator: user
     cannot :approve,            Activity
     can    :approve,            Activity do |activity|
       activity.can_be_approved_by? user
@@ -59,7 +59,7 @@ class Ability
 
     # Can read all groups; can manage own groups
     can :read,                  Group
-    can %i[read update delete], Group, creator: user.id
+    can %i[read update delete], Group, creator: user
 
     # Can create subscriptions; can see/delete own subscriptions
     can :create,         Subscription                   if user.present?

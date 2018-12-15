@@ -31,7 +31,7 @@ beach_trip:
   approved_at:     null
   occurs_at:       <%= 2.days.from_now.midday %>
   finishes_at:     <%= 2.days.from_now.midday + 2.hours %>
-  creator:         <%= User.find_by(email: 'edu.kate@example.com').id %>
+  creator:         teacher_kate
 
 code_club:
   name:          Code Club
@@ -42,4 +42,4 @@ code_club:
   approved_at:   null
   occurs_at:     <%= 2.days.from_now.midday %>
   finishes_at:   <%= 2.days.from_now.midday + 2.hours %>
-  creator:       <%= User.find_by(email: 'edu.kate@example.com').id %>
+  creator:       teacher_kate

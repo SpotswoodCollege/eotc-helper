@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
 
-    @activity.creator = current_user.id if user_signed_in?
+    @activity.creator = current_user if user_signed_in?
     @activity.edited_at = @activity.created_at
 
     if @activity.save

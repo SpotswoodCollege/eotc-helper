@@ -16,7 +16,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_raises 'RuntimeError: Must be logged in' do
       post groups_url group: { name: 'PEH101',
                                description: 'Physical Education Level 1',
-                               creator: user.id }
+                               creator: user }
     end
   end
 
@@ -25,7 +25,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
     post groups_url group: { name: 'PEH101',
                              description: 'Physical Education Level 1',
-                             creator: user.id }
+                             creator: user }
     assert_response :found, 'Teacher could not save group'
   end
 
@@ -33,7 +33,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     user = users(:teacher_kate)
     sign_in user
     post groups_url group: { description: 'Physical Education Level 1',
-                             creator: user.id }
+                             creator: user }
     assert_response :bad_request, 'Group was saved nameless'
   end
 
@@ -41,14 +41,14 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     user = users(:teacher_kate)
     sign_in user
     post groups_url group: { name: 'PEH101',
-                             creator: user.id }
+                             creator: user }
     assert_response :found, 'Group without description was not saved'
   end
 
   test 'should not edit group with standard role' do
     peh101 = Group.create(name: 'PEH101',
                           description: 'Physical Education',
-                          creator: users(:teacher_kate).id)
+                          creator: users(:teacher_kate))
     peh101.save!
 
     user = users(:average_joe)
@@ -65,7 +65,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   test 'should be able to edit group' do
     peh101 = Group.create(name: 'PEH101',
                           description: 'Physical Education',
-                          creator: users(:teacher_kate).id)
+                          creator: users(:teacher_kate))
     peh101.save!
 
     user = users(:teacher_kate)

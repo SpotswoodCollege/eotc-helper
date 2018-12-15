@@ -26,7 +26,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
                                       description: 'A swim in the school pool.',
                                       activity_type: 'in_school',
                                       risk: 'high',
-                                      creator: user.id }
+                                      creator: user }
     end
   end
 
@@ -37,7 +37,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
                                     description: 'A swim in the school pool.',
                                     activity_type: 'in_school',
                                     risk: 'high',
-                                    creator: user.id }
+                                    creator: user }
     assert_response :found, 'Teacher could not save activity'
   end
 
@@ -47,7 +47,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     post activities_url activity: { description: 'A swim in the school pool.',
                                     activity_type: 'in_school',
                                     risk: 'high',
-                                    creator: user.id }
+                                    creator: user }
     assert_response :bad_request, 'Teacher could save activity with blank name'
   end
 
@@ -57,7 +57,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     post activities_url activity: { name: 'Pool Swim',
                                     activity_type: 'in_school',
                                     risk: 'high',
-                                    creator: user.id }
+                                    creator: user }
     assert_response :found,
                     'Teacher could not save activity with blank description'
   end
