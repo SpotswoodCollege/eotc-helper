@@ -1,0 +1,6 @@
+- @activity.valid_types.values.each do |activity_type|
+  - @activity.valid_risks.values.each do |risk|
+    %ul{id: 'example_' + activity_type.to_s + '_' + risk.to_s, class: 'activity_example_list hidden'}
+      - t("labels.activity.examples.#{activity_type}.#{risk}_risk").each do |example|
+        %li{class: 'activity_example'}
+          = example

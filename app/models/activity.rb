@@ -86,6 +86,20 @@ class Activity < ApplicationRecord
     approved_at >= (edited_at || created_at)
   end
 
+  def valid_types
+    a = %i[in_school community day_trip multi_day].map do |i|
+      [I18n.t("labels.activity.type.#{i}.brief"), i]
+    end
+    [*a].to_h
+  end
+
+  def valid_risks
+    a = %i[low high].map do |i|
+      [I18n.t("labels.activity.risk_level.#{i}"), i]
+    end
+    [*a].to_h
+  end
+
   private
 
   def approval_needed
