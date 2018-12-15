@@ -73,4 +73,16 @@ class User < ApplicationRecord
   has_many :groups, -> { distinct }, through: :subscriptions
 
   has_many :activities, through: :groups
+
+  has_many :created_activities,
+           class_name: 'Activity',
+           inverse_of: :creator,
+           foreign_key: :creator_id,
+           dependent: :nullify
+
+  has_many :created_groups,
+           class_name: 'Group',
+           inverse_of: :creator,
+           foreign_key: :creator_id,
+           dependent: :nullify
 end

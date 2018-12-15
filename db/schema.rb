@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_014619) do
+ActiveRecord::Schema.define(version: 2018_12_15_013719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(version: 2018_12_13_014619) do
     t.datetime "approved_at"
     t.datetime "occurs_at"
     t.datetime "finishes_at"
-    t.bigint "creator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "creator_id"
+    t.index ["creator_id"], name: "index_activities_on_creator_id"
     t.index ["name"], name: "index_activities_on_name", unique: true
   end
 
@@ -44,7 +45,8 @@ ActiveRecord::Schema.define(version: 2018_12_13_014619) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "creator"
+    t.bigint "creator_id"
+    t.index ["creator_id"], name: "index_groups_on_creator_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(version: 2018_12_13_014619) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "users", column: "creator_id"
   add_foreign_key "assignments", "activities"
   add_foreign_key "assignments", "groups"
+  add_foreign_key "groups", "users", column: "creator_id"
 end
