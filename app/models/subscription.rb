@@ -1,3 +1,4 @@
+# Links Users to Groups. Accessed using Subscribe buttons.
 class Subscription < ApplicationRecord
   belongs_to :user
   belongs_to :group

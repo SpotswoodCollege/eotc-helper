@@ -1,3 +1,4 @@
+# The model for defining CanCanCan abilities.
 class Ability
   include CanCan::Ability
 

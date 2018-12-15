@@ -1,3 +1,4 @@
+# Links Activities to Groups.
 class Assignment < ApplicationRecord
   belongs_to :activity
   belongs_to :group
