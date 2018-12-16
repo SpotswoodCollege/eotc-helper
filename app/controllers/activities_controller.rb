@@ -38,8 +38,10 @@ class ActivitiesController < ApplicationController
       update_approve
     elsif would_change(activity_params_no_approve, @activity)
       update_update
-    else
+    elsif can? :read, @activity
       redirect_to @activity || activities_path
+    else
+      redirect_to activities_path
     end
   end
 
