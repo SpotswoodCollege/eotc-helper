@@ -29,6 +29,23 @@ class User < ApplicationRecord
                                 message: I18n.t('error.brief.valid_rel',
                                                 rel: 'role') }
 
+  has_many :subscriptions, dependent: :destroy
+  has_many :groups, -> { distinct }, through: :subscriptions
+
+  has_many :activities, through: :groups
+
+  has_many :created_activities,
+           class_name: 'Activity',
+           inverse_of: :creator,
+           foreign_key: :creator_id,
+           dependent: :nullify
+
+  has_many :created_groups,
+           class_name: 'Group',
+           inverse_of: :creator,
+           foreign_key: :creator_id,
+           dependent: :nullify
+
   # Is the user's role greater than or equal to the given role?
   def role_greater_or_equal_to?(other_role)
     other_role = other_role.to_sym || ''
@@ -68,21 +85,4 @@ class User < ApplicationRecord
   def t_role
     I18n.t("labels.user.role.#{role}")
   end
-
-  has_many :subscriptions, dependent: :destroy
-  has_many :groups, -> { distinct }, through: :subscriptions
-
-  has_many :activities, through: :groups
-
-  has_many :created_activities,
-           class_name: 'Activity',
-           inverse_of: :creator,
-           foreign_key: :creator_id,
-           dependent: :nullify
-
-  has_many :created_groups,
-           class_name: 'Group',
-           inverse_of: :creator,
-           foreign_key: :creator_id,
-           dependent: :nullify
 end
