@@ -35,6 +35,16 @@ has_many :subscriptions
 has_many :groups, through: :subscriptions
 
 has_many :activities, through: :groups
+
+has_many :created_activities,
+         class_name: 'Activity',
+         inverse_of: :creator,
+         foreign_key: :creator_id,
+
+has_many :created_groups,
+         class_name: 'Group',
+         inverse_of: :creator,
+         foreign_key: :creator_id,
 ```
 
 ## `Subscription`
@@ -71,7 +81,7 @@ belongs_to :group
 | :------------- | :------------- | :------------- |
 | `name`         | `string`       | -              |
 | `description`  | `text`         | -              |
-| `creator`      | `integer`      | User ID        |
+| `creator_id`   | `bigint`       | Relation       |
 | `created_at`   | `datetime`     | Rails standard |
 | `updated_at`   | `datetime`     | Rails standard |
 
@@ -83,6 +93,11 @@ has_many :users, through: :subscriptions
 
 has_many :assignments
 has_many :activities, through: :assignments
+
+belongs_to :creator,
+           class_name: 'User',
+           foreign_key: :creator_id,
+           inverse_of: :created_groups
 ```
 
 ## `Assignment`
@@ -123,7 +138,7 @@ belongs_to :activity
 | `approved_at`  | `datetime`     | Updated on approve |
 | `occurs_at`    | `datetime`     | -              |
 | `finishes_at`  | `datetime`     | -              |
-| `creator`      | `integer`      | User ID of creator |
+| `creator_id`   | `bigint`       | Association    |
 | `created_at`   | `datetime`     | Rails standard |
 | `updated_at`   | `datetime`     | Rails standard |
 
@@ -149,4 +164,9 @@ has_many :assignments
 has_many :groups, through: :assignments
 
 has_many :users, through: :groups
+
+belongs_to :creator,
+           class_name: 'User',
+           foreign_key: :creator_id,
+           inverse_of: :created_activities
 ```
