@@ -9,12 +9,12 @@
 
 ### Schema:
 
-| Attribute      | Type           | Notes          |
-| :------------- | :------------- | :------------- |
-| Devise columns | Many           | -              |
-| `role`         | `string`       | See List A     |
-| `created_at`   | `datetime`     | Rails standard |
-| `updated_at`   | `datetime`     | Rails standard |
+| Attribute      | Type       | Notes          |
+| :------------- | :--------- | :------------- |
+| Devise columns | Many       | -              |
+| `role`         | `string`   | See List A     |
+| `created_at`   | `datetime` | Rails standard |
+| `updated_at`   | `datetime` | Rails standard |
 
 ### List A
 
@@ -53,12 +53,12 @@ has_many :created_groups,
 
 ### Schema:
 
-| Attribute      | Type           | Notes          |
-| :------------- | :------------- | :------------- |
-| `user_id`      | `bigint`       | -              |
-| `group_id`     | `bigint`       | -              |
-| `created_at`   | `datetime`     | Rails standard |
-| `updated_at`   | `datetime`     | Rails standard |
+| Attribute    | Type       | Notes          |
+| :----------- | :--------- | :------------- |
+| `user_id`    | `bigint`   | -              |
+| `group_id`   | `bigint`   | -              |
+| `created_at` | `datetime` | Rails standard |
+| `updated_at` | `datetime` | Rails standard |
 
 ### Relations
 
@@ -77,13 +77,13 @@ belongs_to :group
 
 ### Schema:
 
-| Attribute      | Type           | Notes          |
-| :------------- | :------------- | :------------- |
-| `name`         | `string`       | -              |
-| `description`  | `text`         | -              |
-| `creator_id`   | `bigint`       | Relation       |
-| `created_at`   | `datetime`     | Rails standard |
-| `updated_at`   | `datetime`     | Rails standard |
+| Attribute     | Type       | Notes          |
+| :------------ | :--------- | :------------- |
+| `name`        | `string`   | -              |
+| `description` | `text`     | -              |
+| `creator_id`  | `bigint`   | Relation       |
+| `created_at`  | `datetime` | Rails standard |
+| `updated_at`  | `datetime` | Rails standard |
 
 ### Relations
 
@@ -106,12 +106,12 @@ belongs_to :creator,
 
 ### Schema:
 
-| Attribute      | Type           | Notes          |
-| :------------- | :------------- | :------------- |
-| `activity_id`  | `bigint`       | -              |
-| `group_id`     | `bigint`       | -              |
-| `created_at`   | `datetime`     | Rails standard |
-| `updated_at`   | `datetime`     | Rails standard |
+| Attribute     | Type       | Notes          |
+| :------------ | :--------- | :------------- |
+| `activity_id` | `bigint`   | -              |
+| `group_id`    | `bigint`   | -              |
+| `created_at`  | `datetime` | Rails standard |
+| `updated_at`  | `datetime` | Rails standard |
 
 ### Relations
 
@@ -128,19 +128,19 @@ belongs_to :activity
 
 ### Schema:
 
-| Attribute      | Type           | Notes          |
-| :------------- | :------------- | :------------- |
-| `name`         | `string`       | Unique         |
-| `description`  | `text`         | -              |
-| `type`         | `string`       | See List A     |
-| `risk`         | `string`       | See List B     |
-| `edited_at`    | `datetime`     | Updated on edit |
-| `approved_at`  | `datetime`     | Updated on approve |
-| `occurs_at`    | `datetime`     | -              |
-| `finishes_at`  | `datetime`     | -              |
-| `creator_id`   | `bigint`       | Association    |
-| `created_at`   | `datetime`     | Rails standard |
-| `updated_at`   | `datetime`     | Rails standard |
+| Attribute     | Type       | Notes              |
+| :------------ | :--------- | :----------------- |
+| `name`        | `string`   | Unique             |
+| `description` | `text`     | -                  |
+| `type`        | `string`   | See List A         |
+| `risk`        | `string`   | See List B         |
+| `edited_at`   | `datetime` | Updated on edit    |
+| `approved_at` | `datetime` | Updated on approve |
+| `occurs_at`   | `datetime` | -                  |
+| `finishes_at` | `datetime` | -                  |
+| `creator_id`  | `bigint`   | Association        |
+| `created_at`  | `datetime` | Rails standard     |
+| `updated_at`  | `datetime` | Rails standard     |
 
 ### List A
 
@@ -154,8 +154,6 @@ belongs_to :activity
 ### List B
 
 `risk` can be either `low` or `high`.
-
-
 
 ### Relations
 
