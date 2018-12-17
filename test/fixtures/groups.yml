@@ -19,3 +19,7 @@ SPA101:
 ENG302:
   name:        'English 302'
   description: 'Level 3 English.'
+
+CODE_CLUB:
+  name:        'Code Club'
+  description: 'A club for coding.'

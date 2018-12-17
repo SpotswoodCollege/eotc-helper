@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  activity: one
-  group: one
+measuring_trees_MAT201:
+  activity:              measuring_trees
+  group:                 MAT201
 
-two:
-  activity: two
-  group: two
+code_club:
+  activity:              code_club
+  group:                 CODE_CLUB
