@@ -1,0 +1,9 @@
+Reminder about a school activity
+--------------------------------
+
+<%= @activity.name %> ( <%= activity_url @activity %> ) through:
+<%- @activity.groups.each do |g| %>
+  <%- if g.in? @user.groups %>
+- <%= g.name %>
+  <%- end %>
+<%- end %>

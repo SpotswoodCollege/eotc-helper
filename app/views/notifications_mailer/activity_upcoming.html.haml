@@ -1,0 +1,7 @@
+%h1 Reminder about a school activity
+
+= link_to @activity.name, @activity
+through
+- @activity.groups.each do |g|
+  - if g.in? @user.groups
+    = g.name
