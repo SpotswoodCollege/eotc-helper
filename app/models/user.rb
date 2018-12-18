@@ -8,8 +8,10 @@ class User < ApplicationRecord
              principal
              board
              administrator].freeze
+  ROLE_STRINGS = ROLES.each(&:to_s).freeze
 
   # TODO: Move to config?
+
   ROLE_GROUPS = {
     standard: %i[standard],
     staff: %i[teacher senior_teacher coordinator principal],
@@ -18,6 +20,7 @@ class User < ApplicationRecord
     board: %i[board],
     administrators: %i[administrator]
   }.freeze
+  ROLE_GROUP_STRINGS = ROLE_GROUPS.each(&:to_s).freeze
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, and :omniauthable
@@ -25,7 +28,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   validates :role, presence: true,
-                   inclusion: { in: ROLES,
+                   inclusion: { in: ROLE_STRINGS,
                                 message: I18n.t('error.brief.valid_rel',
                                                 rel: 'role') }
 
