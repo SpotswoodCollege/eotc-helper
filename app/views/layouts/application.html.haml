@@ -5,8 +5,11 @@
     / Deal with Cross-Site Request Forgery
     = csrf_meta_tags
     / Link application stylesheets
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application',
+                             media: 'all',
+                             'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application',
+                             'data-turbolinks-track': 'reload'
     / Link favicons
     = render 'application/favicon'
   %body

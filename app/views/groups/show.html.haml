@@ -5,7 +5,7 @@
 %em
   = @group.description || t('labels.group.no_description')
 %p
-  = render 'subscriptions/button', locals: {group: @group}
+  = render 'subscriptions/button', group: @group
 %p
   - if can? :edit, @group
     = link_to t('buttons.group.edit'), edit_group_path(@group)

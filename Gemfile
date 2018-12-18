@@ -79,6 +79,9 @@ gem 'exception_handler', '~> 0.8.0.0'
 # Use haml for easy HTML generation
 gem 'haml'
 
+# Use haml-lint for linting haml
+gem 'haml_lint', require: false
+
 # dotenv gem for environment variables
 gem 'dotenv-rails', groups: %i[development test]
 

@@ -5,6 +5,7 @@
     - @assignments.each do |assignment|
       - if assignment.activity
         %li
-          = link_to (assignment.activity.name + ' / ' + assignment.group.name), activity_path(assignment.activity)
+          = link_to (assignment.activity.name + ' / ' + assignment.group.name),
+                     activity_path(assignment.activity)
 - else
   %p No assignments
