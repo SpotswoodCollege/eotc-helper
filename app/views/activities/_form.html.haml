@@ -6,6 +6,7 @@
               collection: activity.valid_types
     = f.input :risk,          as: :radio,
               collection: activity.valid_risks
+    = f.input :groups, as: :check_boxes
   = render 'examples'
   = f.actions do
     = f.action :submit, as: :button

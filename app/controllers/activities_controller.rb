@@ -77,6 +77,7 @@ class ActivitiesController < ApplicationController
                                      :description,
                                      :activity_type,
                                      :risk,
+                                     :groups,
                                      :approve)
   end
 
@@ -84,7 +85,8 @@ class ActivitiesController < ApplicationController
     params.require(:activity).permit(:name,
                                      :description,
                                      :activity_type,
-                                     :risk)
+                                     :risk,
+                                     :groups)
   end
 
   def would_change(some_params, activity)

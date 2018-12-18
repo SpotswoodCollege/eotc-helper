@@ -12,6 +12,12 @@
 %em
   = @activity.description || t('labels.activity.no_description')
 %p
+  In groups:
+  %ol
+    - @activity.groups.each do |group|
+      %li
+        = link_to group.name, group
+%p
   - if can? :edit, @activity
     = link_to t('buttons.activity.edit'), edit_activity_path(@activity)
     |
