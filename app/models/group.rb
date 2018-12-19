@@ -1,7 +1,7 @@
 # Defines a Group. Users can subscribe to groups, and thus recieve notifications
 # of assigned activities.
 class Group < ApplicationRecord
-  validates :name, presence:   { message: I18n.t('error.brief.no_blank') },
+  validates :name, presence: { message: I18n.t('error.brief.no_blank') },
                    uniqueness: { message: I18n.t('error.brief.unique') }
 
   validates :creator, presence: { message: I18n.t('error.brief.log_in') }

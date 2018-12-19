@@ -26,7 +26,7 @@ class Activity < ApplicationRecord
         risk_management_planning: :generic
       }
     },
-    day_trip:  {
+    day_trip: {
       low_risk: {
         approval: %i[senior_teacher coordinator],
         parental_consent: %i[none blanket],
@@ -50,7 +50,7 @@ class Activity < ApplicationRecord
     }
   }.freeze
 
-  validates :name, presence:   { message: I18n.t('error.brief.no_blank') },
+  validates :name, presence: { message: I18n.t('error.brief.no_blank') },
                    uniqueness: { message: I18n.t('error.brief.unique') }
 
   validates :creator, presence: { message: I18n.t('error.brief.log_in') }
@@ -83,6 +83,7 @@ class Activity < ApplicationRecord
   def approved?
     return true  if approval_needed == :none
     return false if approved_at.nil?
+
     approved_at >= (edited_at || created_at)
   end
 
