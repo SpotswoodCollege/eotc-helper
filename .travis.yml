@@ -50,7 +50,7 @@ jobs:
     - name:                'Haml Lint'
       script:
         - haml-lint
-      gemfile:
+      gemfile:             .haml-lint/Gemfile
     - name:                'CommitLint'
       language:            node_js
       node_js:             "6"
