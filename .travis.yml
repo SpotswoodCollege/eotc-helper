@@ -9,7 +9,7 @@
 # For local testing:
 #
 # > rails test
-# > rubocop -a -c .rubocop/yml
+# > rubocop -a
 # > haml-lint
 
 git:
@@ -44,13 +44,13 @@ jobs:
       services:
       before_script:
       script:
-        - rubocop --format worst -c .rubocop/yml
+        - rubocop --format worst
       after_script:
-      gemfile:             .rubocop/Gemfile
+      gemfile:             .build/rubocop.gemfile
     - name:                'Haml Lint'
       script:
         - haml-lint
-      gemfile:             .haml-lint/Gemfile
+      gemfile:             .build/haml-lint.gemfile
     - name:                'CommitLint'
       language:            node_js
       node_js:             "6"
