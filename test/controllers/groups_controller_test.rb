@@ -78,4 +78,15 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :found, 'Group was not edited'
   end
+
+  test 'should not edit group with invalid params' do
+    user = users(:teacher_kate)
+    sign_in user
+
+    patch group_url(groups(:SPA101)), params: { group:
+      { name: '',
+        creator: 'Nobody in particular' } }
+
+    assert_response :bad_request, 'Group was edited'
+  end
 end

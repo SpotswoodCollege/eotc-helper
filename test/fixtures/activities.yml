@@ -52,3 +52,12 @@ measuring_trees:
   occurs_at:      <%= 2.days.from_now.midday %>
   finishes_at:    <%= 2.days.from_now.midday + 2.hours %>
   creator:        senior_teacher_bob
+
+science_experiment:
+  name: Science Experiment
+  description: Sorting pieces of wood by density
+  activity_type:  in_school
+  risk:           low
+  occurs_at:      <%= 2.days.from_now.midday %>
+  finishes_at:    <%= 2.days.from_now.midday + 2.hours %>
+  creator:        teacher_kate

@@ -86,4 +86,47 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     patch activity_url(activities(:beach_trip)),
           params: { activity: { approve: true } }
   end
+
+  test 'should update activity' do
+    user = users(:teacher_kate)
+    sign_in user
+
+    desc = 'A trip to the beach. Whole school can come! Parent helpers needed.'
+
+    patch activity_url(activities(:beach_trip)),
+          params: { activity: { description: desc } }
+  end
+
+  test 'should not update activity with no params' do
+    user = users(:teacher_kate)
+    sign_in user
+
+    assert_raises 'ActionController::ParameterMissing' do
+      patch activity_url(activities(:beach_trip)),
+            params: { activity: {} }
+    end
+  end
+
+  test 'should not update activity with its own params' do
+    user = users(:teacher_kate)
+    sign_in user
+    patch activity_url(activities(:beach_trip)),
+          params: { activity: { name: 'Beach Trip',
+                                activity_type: 'community',
+                                risk: 'high',
+                                creator: users(:teacher_kate) } }
+  end
+
+  test 'should not update activity with standard user' do
+    user = users(:average_joe)
+    sign_in user
+
+    desc = "I don't like sand."
+
+    assert_raises 'CanCan::AccessDenied' do
+      patch activity_url(activities(:beach_trip)),
+            params: { activity: { name: 'too sandy',
+                                  description: desc } }
+    end
+  end
 end

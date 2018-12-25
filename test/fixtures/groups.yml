@@ -15,6 +15,7 @@ MAT201:
 SPA101:
   name:        'Spanish 101'
   description: 'Level 1 Spanish.'
+  creator:     teacher_kate
 
 ENG302:
   name:        'English 302'
