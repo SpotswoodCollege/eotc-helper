@@ -9,13 +9,10 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new(assignment_params)
     @activity = @assignment.activity
 
-    if @assignment.save
-      redirect_to @activity,
-                  notice: I18n.t('labels.assignment.created',
-                                 activity_name: @activity.name)
-    else
-      render @activity || activities_path, status: :bad_request
-    end
+    # REVIEW: Should redirects go here?
+    # REVIEW: I think this should use Ajax for something like the Github tags
+    #          menu
+    @assignment.save!
   end
 
   def destroy
@@ -31,6 +28,6 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.permit(:activity_id, :group_id)
+    params.require(:assignment).permit(:activity_id, :group_id)
   end
 end
