@@ -101,6 +101,18 @@ class Activity < ApplicationRecord
     [*a].to_h
   end
 
+  def notify_subscribers?
+    applicable_users = users.keep_if do |user|
+      user.should_be_notified_by(self)
+    end
+
+    applicable_users.each do |user|
+      mailer = NotificationsMailer.with user: user,
+                                        activity: self
+      mailer.activity_upcoming.deliver_now
+    end
+  end
+
   private
 
   def approval_needed

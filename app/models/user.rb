@@ -88,4 +88,8 @@ class User < ApplicationRecord
   def t_role
     I18n.t("labels.user.role.#{role}")
   end
+
+  def should_be_notified_by?(activity)
+    activity.in? groups
+  end
 end
