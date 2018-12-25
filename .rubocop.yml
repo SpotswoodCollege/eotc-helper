@@ -11,6 +11,10 @@ Rails:
 Style/Documentation:
   Enabled:                     false
 
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+
 Metrics/AbcSize:
   Exclude:
     - app/models/ability.rb
