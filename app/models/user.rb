@@ -17,6 +17,7 @@ class User < ApplicationRecord
     staff: %i[teacher senior_teacher coordinator principal],
     teachers: %i[teacher senior_teacher coordinator],
     principals: %i[principal],
+    coordinators: %i[coordinator principal],
     board: %i[board],
     administrators: %i[administrator]
   }.freeze

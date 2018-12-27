@@ -42,12 +42,16 @@ class Ability
     end
 
     init_standard user
-    init_staff    user if user.of_group? :staff
+
+    init_staff       user if user.of_group? :staff
+    init_coordinator user if user.of_group? :coordinators
+    init_board       user if user.of_group? :board
   end
 
   private
 
   # Standard privileges applied to all users
+  # TODO: Refactor?
   def init_standard(user)
     # Can read approved activities; can manage own activities; delegate approval
     #   to Activity model
@@ -89,6 +93,11 @@ class Ability
     end
   end
 
-  # TODO: Add all important roles etc.
-  #       Awaiting @spottyboy
+  def init_coordinator(_user)
+    can :crud, Activity
+  end
+
+  def init_board(_user)
+    can %i[read create], Activity
+  end
 end
