@@ -13,14 +13,15 @@
 # > haml-lint
 
 git:
-  depth:                   3
+  depth:             3
 
 jobs:
   include:
-    - stage:               test
-      name:                'Ruby 2.3'
-      language:            ruby
-      rvm:                 2.3
+    - stage:         test
+      name:          'Ruby 2.3'
+      language:      ruby
+      cache:         bundler
+      rvm:           2.3
       services:
         - postgresql
       before_script:
@@ -28,9 +29,10 @@ jobs:
       script:
         - RAILS_ENV=test
         - bundle exec rake --trace db:migrate test
-    - name:                'Ruby Head'
-      language:            ruby
-      rvm:                 ruby-head
+    - name:          'Ruby Head'
+      language:      ruby
+      cache:         bundler
+      rvm:           ruby-head
       services:
         - postgresql
       before_script:
@@ -39,21 +41,26 @@ jobs:
         - RAILS_ENV=test
         - bundle exec rake --trace db:migrate test
 
-    - stage:               lint
-      name:                'Rubocop'
+    - stage:         lint
+      name:          'Rubocop'
+      language:      ruby
+      cache:         bundler
       services:
       before_script:
       script:
         - rubocop --format worst
       after_script:
-      gemfile:             .build/rubocop.gemfile
-    - name:                'Haml Lint'
+      gemfile:       .build/rubocop.gemfile
+    - name:          'Haml Lint'
+      language:      ruby
+      cache:         bundler
       script:
         - haml-lint
-      gemfile:             .build/haml-lint.gemfile
-    - name:                'CommitLint'
-      language:            node_js
-      node_js:             "6"
+      gemfile:       .build/haml-lint.gemfile
+    - name:          'CommitLint'
+      language:      node_js
+      node_js:       "6"
+      cache:         npm
       services:
       before_script:
       script:
@@ -64,7 +71,7 @@ jobs:
 notifications:
   webhooks:
     urls:
-      secure:              "zAqjR5XJTehORH3NdeTsaHFLXSWWtSHZsAHlMH1FGe3K6MFNHxOWSMi5iUaf69/nSPq4cmrzE0eR6krnNM2W1hFCRizZ1u8RpHve0Fo9YejIPy6YxSY9+5fX5POIuxcwqs6QdAched92jvlmsuzM1uhEn7+WfQFLmgMuqe2nwBG/3VJHZc91YAdja/z/fPLcVGTDG/AybEDa7rZ6PuMKzoFNrLL0vnUGPb+OObpali+6v7w+YYVNTFrMQzcNzRopdduB8INhzG7r4D/xMdGq5xamVYq8GnyN+m3Tk7fXCPrh+1p9T88iTHdDrDI3uHYy37/B+Pkdaz8E6wg1zS+nXMS6305H29UHjzNrgq/6GoR/dyxgeiDPpxGFrT1sJZ4R+qLGFrL7CnQHwXHbxFofnk+MjHAgk5KfK1g0O4q56yTPRGBMF6cVzZkMDqJEhf5P05aTZFPY99xLdtC2FcKRjpkE00lsMKQj5ElOgeyKxgUXChn9tQIOYW0ntiS+JY46fKrmSFRux9ZGJmKlOLoCj3Zrl26QMP7GcTvGyT6XxoTrrCkIUegWvOFnE2411QPIxpYF/tvEWZ3pYGu42LrIloovU66zQoYJxKbyYHKMqHh9sRg8gbZHiUam3paLrcAwmVE/ujqcKzVvZiVOzIEVbg0av1YJs9zZn2wQ+fr9FRI="
+      secure:        "zAqjR5XJTehORH3NdeTsaHFLXSWWtSHZsAHlMH1FGe3K6MFNHxOWSMi5iUaf69/nSPq4cmrzE0eR6krnNM2W1hFCRizZ1u8RpHve0Fo9YejIPy6YxSY9+5fX5POIuxcwqs6QdAched92jvlmsuzM1uhEn7+WfQFLmgMuqe2nwBG/3VJHZc91YAdja/z/fPLcVGTDG/AybEDa7rZ6PuMKzoFNrLL0vnUGPb+OObpali+6v7w+YYVNTFrMQzcNzRopdduB8INhzG7r4D/xMdGq5xamVYq8GnyN+m3Tk7fXCPrh+1p9T88iTHdDrDI3uHYy37/B+Pkdaz8E6wg1zS+nXMS6305H29UHjzNrgq/6GoR/dyxgeiDPpxGFrT1sJZ4R+qLGFrL7CnQHwXHbxFofnk+MjHAgk5KfK1g0O4q56yTPRGBMF6cVzZkMDqJEhf5P05aTZFPY99xLdtC2FcKRjpkE00lsMKQj5ElOgeyKxgUXChn9tQIOYW0ntiS+JY46fKrmSFRux9ZGJmKlOLoCj3Zrl26QMP7GcTvGyT6XxoTrrCkIUegWvOFnE2411QPIxpYF/tvEWZ3pYGu42LrIloovU66zQoYJxKbyYHKMqHh9sRg8gbZHiUam3paLrcAwmVE/ujqcKzVvZiVOzIEVbg0av1YJs9zZn2wQ+fr9FRI="
 
     on_success: change  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
