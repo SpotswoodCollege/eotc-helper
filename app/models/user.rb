@@ -23,6 +23,11 @@ class User < ApplicationRecord
   }.freeze
   ROLE_GROUP_STRINGS = ROLE_GROUPS.each(&:to_s).freeze
 
+  NOTIFICATION_POLICIES = %i[all
+                             only_subscribed
+                             none].freeze
+  NOTIFICATION_POLICY_STRINGS = NOTIFICATION_POLICIES.each(&:to_s).freeze
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, and :omniauthable
   devise :database_authenticatable, :confirmable, :registerable,
@@ -32,6 +37,11 @@ class User < ApplicationRecord
                    inclusion: { in: ROLE_STRINGS,
                                 message: I18n.t('error.brief.valid_rel',
                                                 rel: 'role') }
+
+  validates :notification_policy, presence: true,
+                                  inclusion: { in: NOTIFICATION_POLICY_STRINGS,
+                                               message: I18n.t('error.brief.valid_rel',
+                                                               rel: 'notification policy') }
 
   has_many :subscriptions, dependent: :destroy
   has_many :groups, -> { distinct }, through: :subscriptions
@@ -91,6 +101,6 @@ class User < ApplicationRecord
   end
 
   def should_be_notified_by?(activity)
-    activity.in? groups
+    notification_policy == 'all' || (notification_policy == 'only_subscribed' && activity.in?(groups))
   end
 end
