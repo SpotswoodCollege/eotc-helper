@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   resource   :preferences, only: %i[show update]
 
   resources :groups
-  resources :subscriptions
-  resources :assignments
+  resources :subscriptions, only: %i[index create destroy]
   resources :activities do
     post 'approve'
   end
+  resources :assignments, only: %i[index create destroy]
 
   root 'welcome#index'
 end
