@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   resources :groups
   resources :subscriptions
-  resources :activities
   resources :assignments
+  resources :activities do
+    post 'approve'
+  end
 
   root 'welcome#index'
 end

@@ -1,6 +1,5 @@
 class ActivitiesController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource only: :update
 
   def index
     @activities = Activity.all
@@ -34,54 +33,21 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find(params[:id])
 
-    if activity_params[:approve] == 'true'
-      update_approve
-    elsif would_change(activity_params_no_approve, @activity)
-      update_update
-    elsif can?(:read, @activity) && @activity
-      redirect_to @activity
-    else
-      redirect_to activities_path
-    end
+    redirect_to @activity unless would_change(activity_params, @activity)
+
+    @activity.update! activity_params.merge(edited_at: Time.current)
+  end
+
+  def approve
+    @activity = Activity.find(params[:activity_id])
+    authorize! :approve, @activity
+
+    @activity.update! approved_at: Time.current
   end
 
   private
 
-  # Edit activity
-  def update_update
-    authorize! :update, @activity
-
-    success = @activity.update activity_params_no_approve.merge(edited_at:
-                                                                Time.current)
-
-    if success
-      redirect_to @activity
-    else
-      render 'edit', status: :bad_request
-    end
-  end
-
-  # Approve activity
-  def update_approve
-    authorize! :approve, @activity
-
-    if @activity.update(approved_at: Time.current)
-      redirect_to @activity
-    else
-      render 'edit', status: :bad_request
-    end
-  end
-
   def activity_params
-    params.require(:activity).permit(:name,
-                                     :description,
-                                     :activity_type,
-                                     :risk,
-                                     :groups,
-                                     :approve)
-  end
-
-  def activity_params_no_approve
     params.require(:activity).permit(:name,
                                      :description,
                                      :activity_type,

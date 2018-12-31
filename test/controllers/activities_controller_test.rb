@@ -66,8 +66,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     user = users(:average_joe)
     sign_in user
     assert_raises 'CanCan::AccessDenied' do
-      patch activity_url(activities(:beach_trip)),
-            params: { activity: { approve: true } }
+      post activity_approve_url(activities(:beach_trip))
     end
   end
 
@@ -75,16 +74,14 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     user = users(:teacher_kate)
     sign_in user
     assert_raises 'CanCan::AccessDenied' do
-      patch activity_url(activities(:beach_trip)),
-            params: { activity: { approve: true } }
+      post activity_approve_url(activities(:beach_trip))
     end
   end
 
   test 'should approve community high risk activity as senior teacher' do
     user = users(:senior_teacher_bob)
     sign_in user
-    patch activity_url(activities(:beach_trip)),
-          params: { activity: { approve: true } }
+    post activity_approve_url(activities(:beach_trip))
   end
 
   test 'should update activity' do

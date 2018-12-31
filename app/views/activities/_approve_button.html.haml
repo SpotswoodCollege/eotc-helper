@@ -1,4 +1,4 @@
 - if !activity.approved? && can?(:approve, activity)
-  = button_to t('buttons.activity.approve'), activity,
-    params: { activity: { approve: 'true' } },
-    method: :patch
+  = button_to t('buttons.activity.approve'),
+    activity_approve_url(activity),
+    method: :post
