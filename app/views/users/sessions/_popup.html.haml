@@ -1,0 +1,13 @@
+- if user_signed_in?
+  %div.account_popup.signed_in
+    = button_to t('buttons.account.log_out'),
+                destroy_user_session_path,
+                method: :delete
+    = link_to t('buttons.account.settings'),
+              edit_user_registration_path
+- else
+  %div.account_popup.signed_out
+    -# TODO: Only show session popup when 'login' button is clicked
+    = render 'users/sessions/new_session_popup'
+    = button_to t('buttons.account.sign_up'),
+                new_user_registration_path
