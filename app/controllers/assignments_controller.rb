@@ -1,3 +1,4 @@
+# TODO: Use `respond_to`
 class AssignmentsController < ApplicationController
   load_and_authorize_resource
 
@@ -11,7 +12,7 @@ class AssignmentsController < ApplicationController
 
     # REVIEW: Should redirects go here?
     # REVIEW: I think this should use Ajax for something like the Github tags
-    #          menu
+    #           menu
     @assignment.save!
   end
 
@@ -20,6 +21,7 @@ class AssignmentsController < ApplicationController
     @activity = @assignment.activity
     @assignment.destroy
 
+    # REVIEW: Should this redirect?
     redirect_to @activity,
                 notice: I18n.t('labels.assignment.destroyed',
                                activity_name: @activity.name)

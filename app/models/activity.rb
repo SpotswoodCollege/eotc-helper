@@ -1,4 +1,5 @@
 # Defines an activity.
+# TODO: Massive refactor
 class Activity < ApplicationRecord
   # Official Ministry of Education guidelines from the EOTC Guidelines 2016
   # Source: http://eotc.tki.org.nz/EOTC-home/EOTC-Guidelines
