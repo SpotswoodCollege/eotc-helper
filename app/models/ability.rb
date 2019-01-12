@@ -51,32 +51,14 @@ class Ability
   private
 
   # Standard privileges applied to all users
-  # TODO: Refactor?
   def init_standard(user)
-    # Can read approved activities; can manage own activities; delegate approval
-    #   to Activity model
-    can :read,                  Activity, &:approved?
-    can %i[read update delete], Activity, creator: user
-    cannot :approve,            Activity
-    can    :approve,            Activity do |activity|
-      activity.can_be_approved_by? user
-    end
-
-    # Can read all groups; can manage own groups
-    can :read,                  Group
-    can %i[read update delete], Group, creator: user
-
-    # Can create subscriptions; can see/delete own subscriptions
-    can :create,         Subscription                   if user.present?
-    can %i[read delete], Subscription, user_id: user.id if user.present?
-
-    # Can read assignments when their activities are also visible
-    cannot :read, Assignment
-    can    :read, Assignment do |assignment|
-      can? :read, assignment.activity
-    end
+    init_standard_activities    user
+    init_standard_groups        user
+    init_standard_subscriptions user
+    init_standard_assignments   user
   end
 
+  # Privileges for all staff
   def init_staff(_user)
     # Can read & create activities
     can %i[read create], Activity
@@ -84,20 +66,63 @@ class Ability
     # Can create groups
     can :create, Group
 
-    # Can create assignments; can delete assignments where activity/group is
-    #   also deletable
-    can :create,    Assignment
-    cannot :delete, Assignment
-    can :delete,    Assignment do |assignment|
-      can?(:delete, assignment.group) || can?(:delete, assignment.activity)
-    end
+    # Can create assignments
+    can :create, Assignment
   end
 
+  # Privileges for EOTC Coordinators
   def init_coordinator(_user)
     can :crud, Activity
   end
 
+  # Privileges for BoT members
   def init_board(_user)
     can %i[read create], Activity
+  end
+
+  # Methods for standard initialization
+
+  # Activity permissions for standard users
+  #
+  # Can read approved activities; can manage own activities; delegate approval
+  #   to Activity model
+  def init_standard_activities(user)
+    can :read,                   Activity, &:approved?
+    can %i[read update destroy], Activity, creator: user
+    cannot :approve,             Activity
+    can    :approve,             Activity do |activity|
+      activity.can_be_approved_by? user
+    end
+  end
+
+  # Group permissions for standard users
+  #
+  # Can read all groups; can manage own groups
+  def init_standard_groups(user)
+    can :read,              Group
+    can %i[update destroy], Group, creator: user
+  end
+
+  # Subscription permissions for standard users
+  #
+  # Can create subscriptions; can see/destroy own subscriptions
+  def init_standard_subscriptions(user)
+    can :create,          Subscription                   if user.present?
+    can %i[read destroy], Subscription, user_id: user.id if user.present?
+  end
+
+  # Assignment permissions for standard users
+  #
+  # Can read assignments when their activities are also visible;
+  # can read/destroy assignments where user created their activities/groups
+  def init_standard_assignments(user)
+    cannot %i[read destroy], Assignment
+    can    :read, Assignment do |assignment|
+      can?(:read, assignment.activity) || assignment.owned_by?(user)
+    end
+    can :destroy, Assignment do |assignment|
+      assignment.inspect
+      assignment.owned_by? user
+    end
   end
 end

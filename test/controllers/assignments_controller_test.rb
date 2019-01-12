@@ -55,4 +55,31 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
       } }
     end
   end
+
+  test 'should not delete assignment with standard user' do
+    user = users(:average_joe)
+    sign_in user
+
+    assert_raises 'CanCan::AccessDenied' do
+      delete assignment_url(assignments(:measuring_trees_MAT201))
+    end
+  end
+
+  test 'should not delete assignment with user' \
+       ' who does not own activity or group' do
+    user = users(:teacher_kate)
+    sign_in user
+
+    assert_raises 'CanCan::AccessDenied' do
+      delete assignment_url(assignments(:measuring_trees_MAT201))
+    end
+  end
+
+  test 'should delete assignment' do
+    user = users(:senior_teacher_bob)
+    sign_in user
+
+    delete assignment_url(assignments(:measuring_trees_MAT201))
+    assert_response :found, 'Could not delete own assignment'
+  end
 end

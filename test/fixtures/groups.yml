@@ -7,10 +7,12 @@ general:
 SCI101:
   name:        'Science 101'
   description: 'Level 1 Science.'
+  creator:     teacher_kate
 
 MAT201:
   name:        'Mathematics 201'
   description: 'Level 2 Mathematics.'
+  creator:     senior_teacher_bob
 
 SPA101:
   name:        'Spanish 101'
@@ -20,7 +22,9 @@ SPA101:
 ENG302:
   name:        'English 302'
   description: 'Level 3 English.'
+  creator:     teacher_kate
 
 CODE_CLUB:
   name:        'Code Club'
   description: 'A club for coding.'
+  creator:     senior_teacher_bob
