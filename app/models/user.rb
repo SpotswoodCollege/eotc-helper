@@ -39,9 +39,11 @@ class User < ApplicationRecord
                                                 rel: 'role') }
 
   validates :notification_policy, presence: true,
-                                  inclusion: { in: NOTIFICATION_POLICY_STRINGS,
-                                               message: I18n.t('error.brief.valid_rel',
-                                                               rel: 'notification policy') }
+                                  inclusion: {
+                                    in: NOTIFICATION_POLICY_STRINGS,
+                                    message: I18n.t('error.brief.valid_rel',
+                                                    rel: 'notification policy')
+                                  }
 
   has_many :subscriptions, dependent: :destroy
   has_many :groups, -> { distinct }, through: :subscriptions
@@ -101,6 +103,8 @@ class User < ApplicationRecord
   end
 
   def should_be_notified_by?(activity)
-    notification_policy == 'all' || (notification_policy == 'only_subscribed' && activity.in?(groups))
+    return true if notification_policy == 'all'
+
+    notification_policy == 'only_subscribed' && activity.in?(groups)
   end
 end
