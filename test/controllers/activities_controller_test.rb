@@ -38,7 +38,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
                                     activity_type: 'in_school',
                                     risk: 'high',
                                     creator: user }
-    assert_response :found, 'Teacher could not save activity'
+    assert_response :redirect, 'Teacher could not save activity'
   end
 
   test 'should not create activity with blank name' do
@@ -58,14 +58,14 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
                                     activity_type: 'in_school',
                                     risk: 'high',
                                     creator: user }
-    assert_response :found,
+    assert_response :redirect,
                     'Teacher could not save activity with blank description'
   end
 
   test 'should not approve with standard role' do
     user = users(:average_joe)
     sign_in user
-    assert_raises 'CanCan::AccessDenied' do
+    assert_access_denied do
       post activity_approve_url(activities(:beach_trip))
     end
   end
@@ -73,7 +73,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test 'should not approve community high risk activity as teacher' do
     user = users(:teacher_kate)
     sign_in user
-    assert_raises 'CanCan::AccessDenied' do
+    assert_access_denied do
       post activity_approve_url(activities(:beach_trip))
     end
   end
@@ -120,7 +120,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     desc = "I don't like sand."
 
-    assert_raises 'CanCan::AccessDenied' do
+    assert_access_denied do
       patch activity_url(activities(:beach_trip)),
             params: { activity: { name: 'too sandy',
                                   description: desc } }

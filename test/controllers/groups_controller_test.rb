@@ -26,7 +26,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     post groups_url group: { name: 'PEH101',
                              description: 'Physical Education Level 1',
                              creator: user }
-    assert_response :found, 'Teacher could not save group'
+    assert_response :redirect, 'Teacher could not save group'
   end
 
   test 'should not be able to create group with blank name' do
@@ -42,7 +42,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
     post groups_url group: { name: 'PEH101',
                              creator: user }
-    assert_response :found, 'Group without description was not saved'
+    assert_response :redirect, 'Group without description was not saved'
   end
 
   test 'should not edit group with standard role' do
@@ -76,7 +76,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
         description: 'Physical Education Level 1',
         creator: user.id } }
 
-    assert_response :found, 'Group was not edited'
+    assert_response :redirect, 'Group was not edited'
   end
 
   test 'should not edit group with invalid params' do

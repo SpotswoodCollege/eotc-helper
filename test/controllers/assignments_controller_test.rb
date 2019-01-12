@@ -13,7 +13,7 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
     user = users(:average_joe)
     sign_in user
 
-    assert_raises 'CanCan::AccessDenied' do
+    assert_access_denied do
       post assignments_url, params: { assignment: {
         group: groups(:SCI101),
         activity: activities(:science_experiment)
@@ -60,7 +60,7 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
     user = users(:average_joe)
     sign_in user
 
-    assert_raises 'CanCan::AccessDenied' do
+    assert_access_denied do
       delete assignment_url(assignments(:measuring_trees_MAT201))
     end
   end
@@ -70,7 +70,7 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
     user = users(:teacher_kate)
     sign_in user
 
-    assert_raises 'CanCan::AccessDenied' do
+    assert_access_denied do
       delete assignment_url(assignments(:measuring_trees_MAT201))
     end
   end
@@ -80,6 +80,6 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     delete assignment_url(assignments(:measuring_trees_MAT201))
-    assert_response :found, 'Could not delete own assignment'
+    assert_response :redirect, 'Could not delete own assignment'
   end
 end
