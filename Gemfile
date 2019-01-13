@@ -82,6 +82,9 @@ gem 'haml'
 # Use haml-lint for linting haml
 gem 'haml_lint', require: false
 
+# Use prawn for PDF generation
+gem 'prawn-rails'
+
 # dotenv gem for environment variables
 gem 'dotenv-rails', groups: %i[development test]
 

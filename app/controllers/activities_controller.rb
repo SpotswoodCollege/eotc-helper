@@ -9,6 +9,23 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
   end
 
+  def export
+    @activity = Activity.find(params[:activity_id])
+
+    filename_elements = ['activity', @activity.name,
+                         @activity.occurs_at]
+
+    filename_elements.map! { |e| e.to_s.parameterize }
+    filename_elements.reject!(&:blank?)
+
+    @filename = "#{filename_elements.join('-')}.pdf"
+
+    respond_to do |format|
+      format.pdf
+      format.csv
+    end
+  end
+
   def new
     @activity = Activity.new
   end

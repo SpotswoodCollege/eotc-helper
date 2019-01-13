@@ -85,13 +85,17 @@ class Ability
   # Activity permissions for standard users
   #
   # Can read approved activities; can manage own activities; delegate approval
-  #   to Activity model
+  #   to Activity model; can export activities that are readable
   def init_standard_activities(user)
     can :read,                   Activity, &:approved?
     can %i[read update destroy], Activity, creator: user
     cannot :approve,             Activity
     can    :approve,             Activity do |activity|
       activity.can_be_approved_by? user
+    end
+    cannot :export, Activity
+    can    :export, Activity do |activity|
+      can? :read, activity
     end
   end
 

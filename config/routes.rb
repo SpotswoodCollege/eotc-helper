@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :subscriptions, only: %i[index create destroy]
   resources :activities do
+    get 'export'
     post 'approve'
   end
   resources :assignments, only: %i[index create destroy]
