@@ -76,8 +76,8 @@ gem 'rails_real_favicon', group: :development
 # Use exception_handler for cool dynamic exception pages
 gem 'exception_handler', '~> 0.8.0.0'
 
-# Use haml for easy HTML generation
-gem 'haml'
+# Use hamlit for fast, easy HAML -> HTML generation
+gem 'hamlit'
 
 # Use haml-lint for linting haml
 gem 'haml_lint', require: false
