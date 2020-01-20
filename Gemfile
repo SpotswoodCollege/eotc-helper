@@ -62,7 +62,7 @@ end
 gem 'devise'
 
 # Use CanCanCan for roles and permissions
-gem 'cancancan', '~> 2.3'
+gem 'cancancan', '~> 3.0'
 
 # Use Letter Opener for development mail previews
 gem 'letter_opener', group: :development
