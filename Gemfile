@@ -9,7 +9,7 @@ end
 gem 'rails', '~> 5.2.1', '>= 5.2.1.1'
 
 # Coveralls for code coverage
-gem 'coveralls', require: false
+gem 'coveralls', '>= 0.8.22', require: false
 
 # Set databases for Active Record
 group :development, :test do
