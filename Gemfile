@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1', '>= 5.2.1.1'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
 
 # Coveralls for code coverage
 gem 'coveralls', require: false
